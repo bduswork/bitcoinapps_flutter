@@ -1,5 +1,5 @@
-import 'package:btcapp/utils/local_storage/app_sharedpreference.dart';
 import 'package:btcapp/utils/constants/color_constant.dart';
+import 'package:btcapp/utils/local_storage/app_sharedpreference.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeProvider extends ChangeNotifier {
@@ -104,6 +104,29 @@ class AppThemeProvider extends ChangeNotifier {
   Color get blockEmptyIconColor => _isDarkMode
       ? DarkThemeColors.blockEmptyIconColor
       : LightThemeColors.blockEmptyIconColor;
+
+  //dialog colors
+  Color get dialogBgColor => _isDarkMode ? DarkThemeColors.dialogBgColor : LightThemeColors.dialogBgColor;
+  Color get dialogTextColor => _isDarkMode ? DarkThemeColors.dialogTextColor : LightThemeColors.dialogTextColor;
+  Color get dialogCloseIconColor => _isDarkMode ? DarkThemeColors.dialogCloseIconColor : LightThemeColors.dialogCloseIconColor;
+
+  //info button colors
+  Color get infoButtonBgColor1 => _isDarkMode ? DarkThemeColors.infoButtonBgColor1 : LightThemeColors.infoButtonBgColor1;
+  Color get infoButtonBgColor2 => _isDarkMode ? DarkThemeColors.infoButtonBgColor2 : LightThemeColors.infoButtonBgColor2;
+  Color get infoButtonIconColor => _isDarkMode ? DarkThemeColors.infoButtonIconColor : LightThemeColors.infoButtonIconColor;
+  Color get infoButtonBorderColor => _isDarkMode ? DarkThemeColors.infoButtonBorderColor : LightThemeColors.infoButtonBorderColor;
+
+
+
+  
+  //social button colors
+  Color get facebookBgColor => _isDarkMode ? DarkThemeColors.facebookBgColor : LightThemeColors.facebookBgColor;
+  Color get googleBgColor => _isDarkMode ? DarkThemeColors.googleBgColor : LightThemeColors.googleBgColor;
+  Color get appleBgColor => _isDarkMode ? DarkThemeColors.appleBgColor : LightThemeColors.appleBgColor;
+
+  //pinput colors
+  Color get pinputBgColor => _isDarkMode ? DarkThemeColors.pinputBgColor : LightThemeColors.pinputBgColor;
+  
 
   // profile colors
   Color get profileIconBorderColor => _isDarkMode
