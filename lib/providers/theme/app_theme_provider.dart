@@ -86,13 +86,24 @@ class AppThemeProvider extends ChangeNotifier {
       : LightThemeColors.bottomNavigationBarBorderGradientColor2;
 
   //block colors
-
-  Color get blockBackgroundColor => _isDarkMode ? DarkThemeColors.blockBackgroundColor : LightThemeColors.blockBackgroundColor;
-  Color get blockBorderColorTop => _isDarkMode ? DarkThemeColors.blockBorderColorTop : LightThemeColors.blockBorderColorTop;
-  Color get blockBorderColorBottom => _isDarkMode ? DarkThemeColors.blockBorderColorBottom : LightThemeColors.blockBorderColorBottom;
-  Color get blockGridRightBorderColorTop => _isDarkMode ? DarkThemeColors.blockGridRightBorderColorTop : LightThemeColors.blockGridRightBorderColorTop;
-  Color get blockGridRightBorderColorBottom => _isDarkMode ? DarkThemeColors.blockGridRightBorderColorBottom : LightThemeColors.blockGridRightBorderColorBottom;
-  Color get blockEmptyIconColor => _isDarkMode ? DarkThemeColors.blockEmptyIconColor : LightThemeColors.blockEmptyIconColor;
+  Color get blockBackgroundColor => _isDarkMode
+      ? DarkThemeColors.blockBackgroundColor
+      : LightThemeColors.blockBackgroundColor;
+  Color get blockBorderColorTop => _isDarkMode
+      ? DarkThemeColors.blockBorderColorTop
+      : LightThemeColors.blockBorderColorTop;
+  Color get blockBorderColorBottom => _isDarkMode
+      ? DarkThemeColors.blockBorderColorBottom
+      : LightThemeColors.blockBorderColorBottom;
+  Color get blockGridRightBorderColorTop => _isDarkMode
+      ? DarkThemeColors.blockGridRightBorderColorTop
+      : LightThemeColors.blockGridRightBorderColorTop;
+  Color get blockGridRightBorderColorBottom => _isDarkMode
+      ? DarkThemeColors.blockGridRightBorderColorBottom
+      : LightThemeColors.blockGridRightBorderColorBottom;
+  Color get blockEmptyIconColor => _isDarkMode
+      ? DarkThemeColors.blockEmptyIconColor
+      : LightThemeColors.blockEmptyIconColor;
 
   //dialog colors
   Color get dialogBgColor => _isDarkMode ? DarkThemeColors.dialogBgColor : LightThemeColors.dialogBgColor;
@@ -115,24 +126,7 @@ class AppThemeProvider extends ChangeNotifier {
 
   //pinput colors
   Color get pinputBgColor => _isDarkMode ? DarkThemeColors.pinputBgColor : LightThemeColors.pinputBgColor;
-  Color get blockBackgroundColor => _isDarkMode
-      ? DarkThemeColors.blockBackgroundColor
-      : LightThemeColors.blockBackgroundColor;
-  Color get blockBorderColorTop => _isDarkMode
-      ? DarkThemeColors.blockBorderColorTop
-      : LightThemeColors.blockBorderColorTop;
-  Color get blockBorderColorBottom => _isDarkMode
-      ? DarkThemeColors.blockBorderColorBottom
-      : LightThemeColors.blockBorderColorBottom;
-  Color get blockGridRightBorderColorTop => _isDarkMode
-      ? DarkThemeColors.blockGridRightBorderColorTop
-      : LightThemeColors.blockGridRightBorderColorTop;
-  Color get blockGridRightBorderColorBottom => _isDarkMode
-      ? DarkThemeColors.blockGridRightBorderColorBottom
-      : LightThemeColors.blockGridRightBorderColorBottom;
-  Color get blockEmptyIconColor => _isDarkMode
-      ? DarkThemeColors.blockEmptyIconColor
-      : LightThemeColors.blockEmptyIconColor;
+  
 
   // profile colors
   Color get profileIconBorderColor => _isDarkMode

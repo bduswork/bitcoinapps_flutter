@@ -1,12 +1,11 @@
 import 'package:btcapp/common/app_background.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:btcapp/views/blocks_details/exp.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 class LivePriceDetailsScreen extends StatefulWidget {
   const LivePriceDetailsScreen({super.key});
