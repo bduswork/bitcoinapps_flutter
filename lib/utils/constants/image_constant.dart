@@ -20,6 +20,7 @@ const String createDashboardIcon =
 const String learnBitcoinIcon = "assets/images/icons/learn-bitcoin-icon.svg";
 const String profileIcon = "assets/images/icons/profile-icon.svg";
 
+
 //splash screen image
 const String logoimage = "assets/images/icons/logo.png";
 
@@ -33,3 +34,6 @@ const String welcomeimage = "assets/images/icons/welcome.png";
 
 //sign in screen image
 const String signinimage = "assets/images/icons/logo.png";
+
+const String profileAvatar = "assets/images/icons/profile-avatar.png";
+
