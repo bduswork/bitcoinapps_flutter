@@ -56,4 +56,12 @@ class AppThemeProvider extends ChangeNotifier {
   Color get blockGridRightBorderColorTop => _isDarkMode ? DarkThemeColors.blockGridRightBorderColorTop : LightThemeColors.blockGridRightBorderColorTop;
   Color get blockGridRightBorderColorBottom => _isDarkMode ? DarkThemeColors.blockGridRightBorderColorBottom : LightThemeColors.blockGridRightBorderColorBottom;
   Color get blockEmptyIconColor => _isDarkMode ? DarkThemeColors.blockEmptyIconColor : LightThemeColors.blockEmptyIconColor;
+
+  //social button colors
+  Color get facebookBgColor => _isDarkMode ? DarkThemeColors.facebookBgColor : LightThemeColors.facebookBgColor;
+  Color get googleBgColor => _isDarkMode ? DarkThemeColors.googleBgColor : LightThemeColors.googleBgColor;
+  Color get appleBgColor => _isDarkMode ? DarkThemeColors.appleBgColor : LightThemeColors.appleBgColor;
+
+  //pinput colors
+  Color get pinputBgColor => _isDarkMode ? DarkThemeColors.pinputBgColor : LightThemeColors.pinputBgColor;
 }

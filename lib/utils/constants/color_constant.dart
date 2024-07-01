@@ -15,7 +15,8 @@ class DarkThemeColors {
 
   //custom text field colors
   static const Color customTextFieldFillColor = Colors.transparent;
-  static Color customTextFieldTitleTextColor = const Color(0xFFFFFFFF).withOpacity(0.6);
+  static Color customTextFieldTitleTextColor =
+      const Color(0xFFFFFFFF).withOpacity(0.6);
   static const Color customTextFieldTextColor = Color(0xFFF0F5F3);
   static const Color customTextFieldHintTextColor = Color(0xFF515F80);
   static const Color customTextFieldBorderGradientColor1 = Color(0xFFD77DEE);
@@ -24,8 +25,10 @@ class DarkThemeColors {
   //bottom navigation icon colors
   static const Color bottomNavigationBarColor = Color(0xFF2D2128);
   static const Color bottomNavigationBarActiveIconColor = Color(0xFFFFFFFF);
-  static const Color bottomNavigationBarBorderGradientColor1 = Color(0xFFD77DEE);
-  static const Color bottomNavigationBarBorderGradientColor2 = Color(0xFF808080);
+  static const Color bottomNavigationBarBorderGradientColor1 =
+      Color(0xFFD77DEE);
+  static const Color bottomNavigationBarBorderGradientColor2 =
+      Color(0xFF808080);
 
   //block colors
   static const Color blockBackgroundColor = Color(0xFF0E0C15);
@@ -33,12 +36,20 @@ class DarkThemeColors {
   static const Color blockBorderColorBottom = Color(0xFF808080);
   static const Color blockGridRightBorderColorTop = Color(0xFFD77DEE);
   static const Color blockGridRightBorderColorBottom = Color(0xFF808080);
-  static const Color blockEmptyIconColor= Color(0xFFA7A6A5);
+  static const Color blockEmptyIconColor = Color(0xFFA7A6A5);
+
+  //social button colors
+  static const Color facebookBgColor = Color(0xFF3B5998);
+  static const Color googleBgColor = Color(0xFFFFFFFF);
+  static const Color appleBgColor = Color(0xFFFFFFFF);
+
+  //pinput colors
+  static const Color pinputBgColor = Colors.transparent;
 }
 
 class LightThemeColors {
   //app primary
-  static const Color primaryColor = Color(0xFFF2FBF7);  
+  static const Color primaryColor = Color(0xFFF2FBF7);
   static const Color backgroundColor = Color(0xFFF2FBF7);
   static const Color textColor = Color(0xFF080B11);
 
@@ -51,7 +62,8 @@ class LightThemeColors {
 
   //custom text field colors
   static const Color customTextFieldFillColor = Colors.transparent;
-  static Color customTextFieldTitleTextColor = const Color(0XFF383838).withOpacity(0.8);
+  static Color customTextFieldTitleTextColor =
+      const Color(0XFF383838).withOpacity(0.8);
   static const Color customTextFieldTextColor = Color(0xFF5EB789);
   static const Color customTextFieldHintTextColor = Color(0xFF515F80);
   static const Color customTextFieldBorderGradientColor1 = Color(0xFF5EB789);
@@ -60,8 +72,10 @@ class LightThemeColors {
   //bottom navigation icon colors
   static const Color bottomNavigationBarColor = Color(0xFFFFFFFF);
   static const Color bottomNavigationBarActiveIconColor = Color(0xFF5EB789);
-  static const Color bottomNavigationBarBorderGradientColor1 = Color(0xFF5EB789);
-  static const Color bottomNavigationBarBorderGradientColor2 = Color(0xFF5EB789);
+  static const Color bottomNavigationBarBorderGradientColor1 =
+      Color(0xFF5EB789);
+  static const Color bottomNavigationBarBorderGradientColor2 =
+      Color(0xFF5EB789);
 
   //block colors
   static const Color blockBackgroundColor = Color(0xFFFFFFFF);
@@ -69,6 +83,13 @@ class LightThemeColors {
   static const Color blockBorderColorBottom = Color(0xFF5EB789);
   static const Color blockGridRightBorderColorTop = Color(0xFF5EB789);
   static const Color blockGridRightBorderColorBottom = Color(0xFF5EB789);
-  static const Color blockEmptyIconColor= Color(0xFFA7A6A6);
-}
+  static const Color blockEmptyIconColor = Color(0xFFA7A6A6);
 
+  //social button colors
+  static const Color facebookBgColor = Color(0xFF3B5998);
+  static const Color googleBgColor = Color(0xFFFFFFFF);
+  static const Color appleBgColor = Color(0xFFFFFFFF);
+
+  //pinput colors
+  static const Color pinputBgColor = Colors.transparent;
+}
