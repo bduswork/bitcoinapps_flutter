@@ -17,6 +17,7 @@ class _LearnBitcoinScreenState extends State<LearnBitcoinScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Provider.of<AppThemeProvider>(context).backgroundColor,
         title: Text('Learn Bitcoin',
             style: TextStyle(
@@ -78,12 +79,13 @@ class _LearnBitcoinScreenState extends State<LearnBitcoinScreen> {
                       _buildChip('lorem ipsum'),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  const Text(
+                  const SizedBox(height: 26),
+                  Text(
                     'What is Bitcoin?',
                     style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      fontWeight: FontWeight.normal,
+                      color: appThemeProvider.learnBitcoinTextColor,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -110,16 +112,27 @@ class _LearnBitcoinScreenState extends State<LearnBitcoinScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      //primary: Colors.white,
-                      backgroundColor: Colors.deepPurple,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            appThemeProvider.learnBitcoinButtonBackgroundColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(
+                              color: AppThemeProvider()
+                                  .learnBitcoinButtonBorderColor,
+                            )),
                       ),
+                      child: Text('Read More',
+                          style: TextStyle(
+                              fontSize: 22,
+                              color: appThemeProvider
+                                  .learnBitcoinButtonTextColor)),
                     ),
-                    child: const Text('Read More'),
                   ),
                   const SizedBox(height: 16),
                   ..._buildOptions(),
@@ -186,29 +199,26 @@ class _LearnBitcoinScreenState extends State<LearnBitcoinScreen> {
   }
 
   Widget _buildChip(String label) {
-    return Chip(
-      label: Text(label),
-      backgroundColor: Colors.deepPurpleAccent,
-      labelStyle: const TextStyle(color: Colors.white),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(4),
+        gradient: LinearGradient(
+          colors: [
+            AppThemeProvider().learnBitcoinChipBackgroundColor1,
+            AppThemeProvider().learnBitcoinChipBackgroundColor2,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Text(
+        label,
+        style: const TextStyle(fontSize: 16, color: Colors.white),
+      ),
     );
-    // Container(
-    //   //width: 40,
-    //   //height: 40,
-    //   decoration: BoxDecoration(
-    //     shape: BoxShape.circle,
-    //     gradient: LinearGradient(
-    //       colors: [
-    //         AppThemeProvider().learnBitcoinChipBackgroundColor1,
-    //         AppThemeProvider().learnBitcoinChipBackgroundColor2,
-    //       ],
-    //       begin: Alignment.topLeft,
-    //       end: Alignment.bottomRight,
-    //     ),
-    //   ),
-    //   child: Text(label),
-    // );
-
-    // Chip(
+    // return Chip(
     //   label: Text(label),
     //   backgroundColor: Colors.deepPurpleAccent,
     //   labelStyle: const TextStyle(color: Colors.white),
