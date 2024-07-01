@@ -1,4 +1,17 @@
 {
+    "splash_title" : "BITCOIN CANVAS",
+    "splash_subtitle" : "BITCOIN MADE BEAUTIFUL",
+
+    "app_name" : "BITCOIN CANVAS",
+    "app_drawer_more_blocks" : "More Blocks",
+    "app_drawer_learn_bitcoin" : "Learn Bitcoin",
+    "app_drawer_settings" : "Settings",
+    "app_drawer_points" : "Points",
+    "app_drawer_dashboards" : "Dashboards",
+    "app_drawer_currency" : "Currency",
+    "app_drawer_dark_mode" : "Dark Mode",
+    "app_drawer_logout" : "Logout",
+
     "app_title" : "My Bitcoin Canvas",
     
     "dark_mode" : "Dark Mode",

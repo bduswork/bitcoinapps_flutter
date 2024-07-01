@@ -39,6 +39,15 @@ class DarkThemeColors {
   static const Color blockGridRightBorderColorBottom = Color(0xFF808080);
   static const Color blockEmptyIconColor = Color(0xFFA7A6A5);
 
+
+  //social button colors
+  static const Color facebookBgColor = Color(0xFF3B5998);
+  static const Color googleBgColor = Color(0xFFFFFFFF);
+  static const Color appleBgColor = Color(0xFFFFFFFF);
+
+  //pinput colors
+  static const Color pinputBgColor = Colors.transparent;
+
   // profile colors
   static const Color profileIconBackgroundColor1 = Color(0xFF5830D5);
   static const Color profileIconBackgroundColor2 = Color(0xFF9F53FF);
@@ -75,6 +84,7 @@ class DarkThemeColors {
   static const Color learnBitcoinSearchBarIconColor = Color(0xFFFFFFFF);
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF664BFB);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF664BFB);
+
 }
 
 // light theme
@@ -116,6 +126,15 @@ class LightThemeColors {
   static const Color blockGridRightBorderColorBottom = Color(0xFF5EB789);
   static const Color blockEmptyIconColor = Color(0xFFA7A6A6);
 
+
+  //social button colors
+  static const Color facebookBgColor = Color(0xFF3B5998);
+  static const Color googleBgColor = Color(0xFFFFFFFF);
+  static const Color appleBgColor = Color(0xFFFFFFFF);
+
+  //pinput colors
+  static const Color pinputBgColor = Colors.transparent;
+
   // profile colors
   static const Color profileIconBackgroundColor1 = Color(0xFF5830D5);
   static const Color profileIconBackgroundColor2 = Color(0xFF9F53FF);
@@ -151,4 +170,5 @@ class LightThemeColors {
   static const Color learnBitcoinSearchBarIconColor = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF58B485);
+
 }
