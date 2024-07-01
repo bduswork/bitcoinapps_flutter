@@ -120,7 +120,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
                     CustomSocialButton(
                       imageUrl: googleIcon, 
-                      backgroundColor: Colors.white,
+                      backgroundColor: const Color.fromARGB(255, 209, 174, 174),
                       onPressed: () {
                         
                       },
