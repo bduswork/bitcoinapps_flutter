@@ -16,3 +16,5 @@ const String homeIcon = "assets/images/icons/home-icon.svg";
 const String createDashboardIcon = "assets/images/icons/create-dashboard-icon.svg";
 const String learnBitcoinIcon = "assets/images/icons/learn-bitcoin-icon.svg";
 const String profileIcon = "assets/images/icons/profile-icon.svg";
+
+const String closeIcon = "assets/images/icons/close-icon.svg";

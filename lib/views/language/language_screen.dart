@@ -8,6 +8,7 @@ import 'package:btcapp/providers/language/language_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
 import 'package:btcapp/utils/constants/size_constant.dart';
+import 'package:btcapp/utils/dialog_helper/dialog_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -123,6 +124,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       onPressed: () {
                         
                       },
+                    ),
+
+                    const SizedBox(height: 30,),
+
+                    CustomRoundedButton(
+                      title: "Custom Dialog", 
+                      onPressed: () {
+                        DialogHelper().showCustomDialogBox(context, content: 'This is the content of the dialog.');
+                      }, 
+                      isPrimary: true
                     ),
 
                     const SizedBox(height: 30,),

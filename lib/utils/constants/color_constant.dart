@@ -34,6 +34,17 @@ class DarkThemeColors {
   static const Color blockGridRightBorderColorTop = Color(0xFFD77DEE);
   static const Color blockGridRightBorderColorBottom = Color(0xFF808080);
   static const Color blockEmptyIconColor= Color(0xFFA7A6A5);
+
+  //dialog colors
+  static const Color dialogBgColor= Color(0xFF440750);
+  static const Color dialogTextColor= Color(0xFFFFFFFF);
+  static const Color dialogCloseIconColor= Color(0xFF959595);
+
+  //info button colors
+  static const Color infoButtonBgColor1= Color(0xFF9F53FF);
+  static const Color infoButtonBgColor2= Color(0xFF5830D5);
+  static const Color infoButtonIconColor= Color(0xFFFFFFFF);
+  static const Color infoButtonBorderColor= Color(0xFFFFFFFF);
 }
 
 class LightThemeColors {
@@ -70,5 +81,16 @@ class LightThemeColors {
   static const Color blockGridRightBorderColorTop = Color(0xFF5EB789);
   static const Color blockGridRightBorderColorBottom = Color(0xFF5EB789);
   static const Color blockEmptyIconColor= Color(0xFFA7A6A6);
+
+  //dialog colors
+  static const Color dialogBgColor= Color(0xFF58B485);
+  static const Color dialogTextColor= Color(0xFFFFFFFF);
+  static const Color dialogCloseIconColor= Color(0xFFFFFFFF);
+
+  //info button colors
+  static const Color infoButtonBgColor1= Color(0xFF54BB31);
+  static const Color infoButtonBgColor2= Color(0xFF54BB31);
+  static const Color infoButtonIconColor= Color(0xFFD5EE70);
+  static const Color infoButtonBorderColor= Color(0xFFD5EE70);
 }
 
