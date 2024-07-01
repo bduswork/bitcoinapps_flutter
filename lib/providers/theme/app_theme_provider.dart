@@ -133,4 +133,58 @@ class AppThemeProvider extends ChangeNotifier {
   Color get profileCopyIconColor => _isDarkMode
       ? DarkThemeColors.profileCopyIconColor
       : LightThemeColors.profileCopyIconColor;
+
+// notificaitons
+  Color get notificationsBorderColor => _isDarkMode
+      ? DarkThemeColors.notificationBorderColor
+      : LightThemeColors.notificationBorderColor;
+
+// live price
+  Color get livePriceTimeTextColor => _isDarkMode
+      ? DarkThemeColors.livePriceTimeTextColor
+      : LightThemeColors.livePriceTimeTextColor;
+  Color get livePriceViewMarketButtonColor => _isDarkMode
+      ? DarkThemeColors.livePriceViewMarketButtonColor
+      : LightThemeColors.livePriceViewMarketButtonColor;
+  Color get livePriceViewMarketButtonTextColor => _isDarkMode
+      ? DarkThemeColors.livePriceViewMarketButtonTextColor
+      : LightThemeColors.livePriceViewMarketButtonTextColor;
+  Color get livePriceItemColor => _isDarkMode
+      ? DarkThemeColors.livePriceItemColor
+      : LightThemeColors.livePriceItemColor;
+  Color get livePriceViewMarketButtonBorderColor => _isDarkMode
+      ? DarkThemeColors.livePriceViewMarketButtonBorderColor
+      : LightThemeColors.livePriceViewMarketButtonBorderColor;
+  Color get livePriceTimeBackgroundColor => _isDarkMode
+      ? DarkThemeColors.livePriceTimeBackgroundColor
+      : LightThemeColors.livePriceTimeBackgroundColor;
+  Color get livePriceGrowthTextColor => _isDarkMode
+      ? DarkThemeColors.livePriceGrowthTextColor
+      : LightThemeColors.livePriceGrowthTextColor;
+  Color get livePriceGrowthTextBackgroundColor => _isDarkMode
+      ? DarkThemeColors.livePriceGrowthTextBackgroundColor
+      : LightThemeColors.livePriceGrowthTextBackgroundColor;
+
+// learn bitcoin
+  Color get learnBitcoinSloganTextColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinSloganTextColor
+      : LightThemeColors.learnBitcoinSloganTextColor;
+  Color get learnBitcoinSearchBarColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinSearchBarColor
+      : LightThemeColors.learnBitcoinSearchBarColor;
+  Color get learnBitcoinSearchBarHintTextColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinSearchBarHintTextColor
+      : LightThemeColors.learnBitcoinSearchBarHintTextColor;
+  Color get learnBitcoinSearchBarIconColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinSearchBarIconColor
+      : LightThemeColors.learnBitcoinSearchBarIconColor;
+  Color get learnBitcoinSearchBarBorderColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinSearchBarBorderColor
+      : LightThemeColors.learnBitcoinSearchBarBorderColor;
+  Color get learnBitcoinChipBackgroundColor1 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinChipBackgroundColor1
+      : LightThemeColors.learnBitcoinChipBackgroundColor1;
+  Color get learnBitcoinChipBackgroundColor2 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinChipBackgroundColor2
+      : LightThemeColors.learnBitcoinChipBackgroundColor2;
 }

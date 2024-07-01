@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// dark theme
 class DarkThemeColors {
   //app primary
   static const Color primaryColor = Color(0xFF080319);
@@ -48,8 +49,35 @@ class DarkThemeColors {
   static const Color profileArrowColor = Color(0xFFFFFFFF);
   static const Color profileSubtitleColor = Color(0xFFA7A6A5);
   static const Color profileCopyIconColor = Color.fromARGB(255, 255, 128, 0);
+
+  // notifications colors
+  static const Color notificationBorderColor = Color(0xFF636363);
+
+  // live price colors
+  static const Color livePriceTimeTextColor = Color(0xFF9F53FF);
+  static Color livePriceTimeBackgroundColor =
+      const Color(0xFFC1B9CB).withOpacity(0.12);
+  static Color livePriceViewMarketButtonColor =
+      const Color(0xFF454B58).withOpacity(0.20);
+  static Color livePriceViewMarketButtonBorderColor =
+      const Color(0xFF686E7B).withOpacity(0.20);
+  static const Color livePriceViewMarketButtonTextColor = Color(0xFFA7A6A5);
+  static const Color livePriceItemColor = Color(0xFFFFFFFF);
+  static const Color livePriceGrowthTextColor = Color(0xFF36AE3A);
+  static Color livePriceGrowthTextBackgroundColor =
+      const Color(0xFF04C88F).withOpacity(0.20);
+
+  // learn bitcoin
+  static const Color learnBitcoinSloganTextColor = Color(0xFFF0F5F3);
+  static const Color learnBitcoinSearchBarColor = Color(0xFF35145D);
+  static const Color learnBitcoinSearchBarBorderColor = Color(0xFF35145D);
+  static const Color learnBitcoinSearchBarHintTextColor = Color(0xFF888B9D);
+  static const Color learnBitcoinSearchBarIconColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF664BFB);
+  static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF664BFB);
 }
 
+// light theme
 class LightThemeColors {
   //app primary
   static const Color primaryColor = Color(0xFFF2FBF7);
@@ -98,4 +126,29 @@ class LightThemeColors {
   static const Color profileArrowColor = Color(0xFFA7A6A6);
   static const Color profileSubtitleColor = Color(0xFFA7A6A5);
   static const Color profileCopyIconColor = Color(0xFFA7A6A5);
+
+  // notifications colors
+  static const Color notificationBorderColor = Color(0xFF636363);
+
+  // live price colors
+  static const Color livePriceTimeTextColor = Color(0xFF58B485);
+  static Color livePriceTimeBackgroundColor =
+      const Color(0xFFC1B9CB).withOpacity(0.12);
+  static const Color livePriceViewMarketButtonColor = Color(0xFF36AE3A);
+  static Color livePriceViewMarketButtonBorderColor =
+      const Color(0xFF686E7B).withOpacity(0.20);
+  static const Color livePriceViewMarketButtonTextColor = Color(0xFFFFFFFF);
+  static const Color livePriceItemColor = Color(0xFF58B485);
+  static const Color livePriceGrowthTextColor = Color(0xFF36AE3A);
+  static const Color livePriceGrowthTextBackgroundColor = Color(0xFFFFFFFF);
+
+  // learn bitcoin
+  static Color learnBitcoinSloganTextColor =
+      const Color(0xFF383838).withOpacity(0.80);
+  static const Color learnBitcoinSearchBarColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinSearchBarBorderColor = Color(0xFFF0F0F0);
+  static const Color learnBitcoinSearchBarHintTextColor = Color(0xFF58B485);
+  static const Color learnBitcoinSearchBarIconColor = Color(0xFF58B485);
+  static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF58B485);
+  static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF58B485);
 }
