@@ -102,6 +102,7 @@ class _SignInViewState extends State<SignInView> {
                             // Navigating to another screen
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const ResetScreenView(),
+                              
                             ));
                           },
                           child: Text(
