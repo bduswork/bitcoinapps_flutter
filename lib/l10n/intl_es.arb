@@ -1,4 +1,18 @@
 {
+    "splash_title" : "LIENZO DE BITCOIN",
+    "splash_subtitle" : "BITCOIN HECHO HERMOSO",
+
+    "app_name" : "LIENZO DE BITCOIN",
+    "app_drawer_more_blocks" : "Más Bloques",
+    "app_drawer_learn_bitcoin" : "Aprender Bitcoin",
+    "app_drawer_settings" : "Configuración",
+    "app_drawer_points" : "Puntos",
+    "app_drawer_dashboards" : "Tableros",
+    "app_drawer_currency" : "Moneda",
+    "app_drawer_dark_mode" : "Modo Oscuro",
+    "app_drawer_settings" : "Configuración",
+    "app_drawer_logout" : "Cerrar Sesión",
+
     "app_title" : "Mi lienzo de Bitcoin",
 
     "dark_mode" : "Modo oscuro",

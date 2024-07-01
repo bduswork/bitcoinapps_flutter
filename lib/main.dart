@@ -1,7 +1,11 @@
+import 'package:btcapp/providers/auth/otp_provider.dart';
+import 'package:btcapp/providers/auth/signin_provider.dart';
+import 'package:btcapp/providers/auth/signup_provider.dart';
 import 'package:btcapp/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:btcapp/providers/language/language_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
-import 'package:btcapp/views/bottom_nav_bar/bottom_nav_bar_screen.dart';
+//import 'package:btcapp/views/bottom_nav_bar/bottom_nav_bar_screen.dart';
+import 'package:btcapp/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,16 +13,14 @@ import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => AppThemeProvider()),
-        ChangeNotifierProvider(create: (context) => LanguageProvider()),
-        ChangeNotifierProvider(create: (context) => BottomNavBarProvider()),
-      ],
-      child: const MyApp()
-    )
-  );
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => AppThemeProvider()),
+    ChangeNotifierProvider(create: (context) => LanguageProvider()),
+    ChangeNotifierProvider(create: (context) => BottomNavBarProvider()),
+    ChangeNotifierProvider(create: (context) => SigninProvider()),
+    ChangeNotifierProvider(create: (context) => SignupProvider()),
+    ChangeNotifierProvider(create: (context) => OtpProvider())
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +34,6 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'My Bitcoin Canvas',
-
           locale: context.watch<LanguageProvider>().appLocale,
           localizationsDelegates: const [
             AppLocalizations.delegate,
@@ -44,16 +45,15 @@ class MyApp extends StatelessWidget {
             Locale('en'), // English
             Locale('es'), // Spanish
           ],
-
           theme: ThemeData(
             primaryColor: appThemeProvider.primaryColor,
-            drawerTheme: DrawerThemeData(
-              backgroundColor: appThemeProvider.primaryColor
-            ),
-            colorScheme: ColorScheme.fromSeed(seedColor: appThemeProvider.primaryColor),
+            drawerTheme:
+                DrawerThemeData(backgroundColor: appThemeProvider.primaryColor),
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: appThemeProvider.primaryColor),
             useMaterial3: true,
           ),
-          home: const BottomNavBarScreen(),
+          home: const SplashScreen(),
         );
       },
     );

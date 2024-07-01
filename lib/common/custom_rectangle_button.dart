@@ -9,12 +9,12 @@ class CustomRectangleButton extends StatelessWidget {
   final bool? isLoading;
   final bool isPrimary;
 
-  const CustomRectangleButton({super.key, 
-    required this.title, 
-    required this.onPressed, 
-    this.isLoading=false, 
-    required this.isPrimary
-  });
+  const CustomRectangleButton(
+      {super.key,
+      required this.title,
+      required this.onPressed,
+      this.isLoading = false,
+      required this.isPrimary});
 
   @override
   Widget build(BuildContext context) {
@@ -29,28 +29,41 @@ class CustomRectangleButton extends StatelessWidget {
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              border: GradientBoxBorder(
-                gradient: appThemeProvider.isDarkMode? LinearGradient(
-                  colors: [appThemeProvider.customButtonBorderGradientColor1, appThemeProvider.customButtonBorderGradientColor2],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight
-                ) : LinearGradient(
-                  colors: [appThemeProvider.customButtonColor, appThemeProvider.customButtonColor],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight
+                border: GradientBoxBorder(
+                  gradient: appThemeProvider.isDarkMode
+                      ? LinearGradient(colors: [
+                          appThemeProvider.customButtonBorderGradientColor1,
+                          appThemeProvider.customButtonBorderGradientColor2
+                        ], begin: Alignment.topLeft, end: Alignment.bottomRight)
+                      : LinearGradient(
+                          colors: [
+                              appThemeProvider.customButtonColor,
+                              appThemeProvider.customButtonColor
+                            ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight),
+                  width: 1,
                 ),
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(8.0),
-              color: isPrimary? appThemeProvider.customButtonColor : appThemeProvider.customButtonColorSecondary
-            ),
-            child: Text(
-              title,
-              style: TextStyle(
-                color: isPrimary? appThemeProvider.customButtonTextColor : appThemeProvider.isDarkMode? appThemeProvider.customButtonTextColor : appThemeProvider.customButtonColor,
-                fontSize: 16,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(8.0),
+                color: isPrimary
+                    ? appThemeProvider.customButtonColor
+                    : appThemeProvider.customButtonColorSecondary),
+            child: isLoading!
+                ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    strokeWidth: 1,
+                  )
+                : Text(
+                    title,
+                    style: TextStyle(
+                      color: isPrimary
+                          ? appThemeProvider.customButtonTextColor
+                          : appThemeProvider.isDarkMode
+                              ? appThemeProvider.customButtonTextColor
+                              : appThemeProvider.customButtonColor,
+                      fontSize: 16,
+                    ),
+                  ),
           );
         },
       ),

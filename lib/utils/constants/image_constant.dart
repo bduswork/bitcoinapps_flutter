@@ -16,3 +16,23 @@ const String homeIcon = "assets/images/icons/home-icon.svg";
 const String createDashboardIcon = "assets/images/icons/create-dashboard-icon.svg";
 const String learnBitcoinIcon = "assets/images/icons/learn-bitcoin-icon.svg";
 const String profileIcon = "assets/images/icons/profile-icon.svg";
+
+
+const String closeIcon = "assets/images/icons/close-icon.svg";
+
+//splash screen image
+const String logoimage = "assets/images/icons/logo.png";
+
+// onboarding 3 screen images
+const String onboarding1 = "assets/images/icons/onboarding1.png";
+const String onboarding2 = "assets/images/icons/onboarding2.png";
+const String onboarding3 = "assets/images/icons/onboarding3.png";
+
+// welcome screen image
+const String welcomeimage = "assets/images/icons/welcome.png";
+
+//sign in screen image
+const String signinimage = "assets/images/icons/logo.png";
+
+const String profileAvatar = "assets/images/icons/profile-avatar.png";
+
