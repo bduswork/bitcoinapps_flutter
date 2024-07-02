@@ -16,7 +16,8 @@ class DarkThemeColors {
 
   //custom text field colors
   static const Color customTextFieldFillColor = Colors.transparent;
-  static Color customTextFieldTitleTextColor = const Color(0xFFFFFFFF).withOpacity(0.6);
+  static Color customTextFieldTitleTextColor =
+      const Color(0xFFFFFFFF).withOpacity(0.6);
   static const Color customTextFieldTextColor = Color(0xFFF0F5F3);
   static const Color customTextFieldHintTextColor = Color(0xFF515F80);
   static const Color customTextFieldBorderGradientColor1 = Color(0xFFD77DEE);
@@ -25,8 +26,10 @@ class DarkThemeColors {
   //bottom navigation icon colors
   static const Color bottomNavigationBarColor = Color(0xFF2D2128);
   static const Color bottomNavigationBarActiveIconColor = Color(0xFFFFFFFF);
-  static const Color bottomNavigationBarBorderGradientColor1 = Color(0xFFD77DEE);
-  static const Color bottomNavigationBarBorderGradientColor2 = Color(0xFF808080);
+  static const Color bottomNavigationBarBorderGradientColor1 =
+      Color(0xFFD77DEE);
+  static const Color bottomNavigationBarBorderGradientColor2 =
+      Color(0xFF808080);
 
   //block colors
   static const Color blockBackgroundColor = Color(0xFF0E0C15);
@@ -37,15 +40,15 @@ class DarkThemeColors {
   static const Color blockEmptyIconColor = Color(0xFFA7A6A5);
 
   //dialog colors
-  static const Color dialogBgColor= Color(0xFF440750);
-  static const Color dialogTextColor= Color(0xFFFFFFFF);
-  static const Color dialogCloseIconColor= Color(0xFF959595);
+  static const Color dialogBgColor = Color(0xFF440750);
+  static const Color dialogTextColor = Color(0xFFFFFFFF);
+  static const Color dialogCloseIconColor = Color(0xFF959595);
 
   //info button colors
-  static const Color infoButtonBgColor1= Color(0xFF9F53FF);
-  static const Color infoButtonBgColor2= Color(0xFF5830D5);
-  static const Color infoButtonIconColor= Color(0xFFFFFFFF);
-  static const Color infoButtonBorderColor= Color(0xFFFFFFFF);
+  static const Color infoButtonBgColor1 = Color(0xFF9F53FF);
+  static const Color infoButtonBgColor2 = Color(0xFF5830D5);
+  static const Color infoButtonIconColor = Color(0xFFFFFFFF);
+  static const Color infoButtonBorderColor = Color(0xFFFFFFFF);
 
   //social button colors
   static const Color facebookBgColor = Color(0xFF3B5998);
@@ -92,7 +95,9 @@ class DarkThemeColors {
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF664BFB);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF664BFB);
 
-
+  //app drawer colors
+  static const Color appDrawerarItemSelectedColor = Color(0xFFFFFFFF);
+  static const Color appDrawerTextColor = Colors.black;
 }
 
 // light theme
@@ -132,18 +137,18 @@ class LightThemeColors {
   static const Color blockBorderColorBottom = Color(0xFF5EB789);
   static const Color blockGridRightBorderColorTop = Color(0xFF5EB789);
   static const Color blockGridRightBorderColorBottom = Color(0xFF5EB789);
-  static const Color blockEmptyIconColor= Color(0xFFA7A6A6);
+  static const Color blockEmptyIconColor = Color(0xFFA7A6A6);
 
   //dialog colors
-  static const Color dialogBgColor= Color(0xFF58B485);
-  static const Color dialogTextColor= Color(0xFFFFFFFF);
-  static const Color dialogCloseIconColor= Color(0xFFFFFFFF);
+  static const Color dialogBgColor = Color(0xFF58B485);
+  static const Color dialogTextColor = Color(0xFFFFFFFF);
+  static const Color dialogCloseIconColor = Color(0xFFFFFFFF);
 
   //info button colors
-  static const Color infoButtonBgColor1= Color(0xFF54BB31);
-  static const Color infoButtonBgColor2= Color(0xFF54BB31);
-  static const Color infoButtonIconColor= Color(0xFFD5EE70);
-  static const Color infoButtonBorderColor= Color(0xFFD5EE70);
+  static const Color infoButtonBgColor1 = Color(0xFF54BB31);
+  static const Color infoButtonBgColor2 = Color(0xFF54BB31);
+  static const Color infoButtonIconColor = Color(0xFFD5EE70);
+  static const Color infoButtonBorderColor = Color(0xFFD5EE70);
 
   //social button colors
   static const Color facebookBgColor = Color(0xFF3B5998);
@@ -189,4 +194,7 @@ class LightThemeColors {
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF58B485);
 
+  //app drawer colors
+  static const Color appDrawerarItemSelectedColor = Color((0xFF080319));
+  static const Color appDrawerTextColor = Color(0xFFFFFFFF);
 }

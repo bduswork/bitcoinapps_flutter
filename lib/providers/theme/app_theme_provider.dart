@@ -210,4 +210,12 @@ class AppThemeProvider extends ChangeNotifier {
   Color get learnBitcoinChipBackgroundColor2 => _isDarkMode
       ? DarkThemeColors.learnBitcoinChipBackgroundColor2
       : LightThemeColors.learnBitcoinChipBackgroundColor2;
+
+  //app drawer colors
+  Color get appDrawerarItemSelectedColor => _isDarkMode
+      ? DarkThemeColors.appDrawerarItemSelectedColor
+      : LightThemeColors.appDrawerarItemSelectedColor;
+  Color get appDrawerTextColor => _isDarkMode
+      ? DarkThemeColors.appDrawerTextColor
+      : LightThemeColors.appDrawerTextColor;
 }
