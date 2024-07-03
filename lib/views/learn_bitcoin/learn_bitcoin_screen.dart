@@ -270,14 +270,16 @@ class _LearnBitcoinScreenState extends State<LearnBitcoinScreen> {
                         ),
                         child: Text(
                           isDescriptionExpanded ? 'Show Less' : 'Read More',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: appThemeProvider.learnBitcoinButtonTextColor,
-                          ),
+                          style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white // Text color in dark mode
+                              // Text color in light mode
+                              ),
                         ),
                       ),
                     ),
                   ),
+
                   const SizedBox(height: 36),
                   // Quiz question
                   ..._buildQuizOptions(),
@@ -348,32 +350,36 @@ class _LearnBitcoinScreenState extends State<LearnBitcoinScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        CustomPaint(
-          painter: AngularGradientBorderPainter(),
-          child: Container(
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: _controller == null || !_controller!.value.isInitialized
-                ? Container(
+        Container(
+          height: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: _controller == null || !_controller!.value.isInitialized
+              ? CustomPaint(
+                  painter: AngularGradientBorderPainter(),
+                  child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(16)),
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                     child: const Center(
                       child: CircularProgressIndicator(),
                     ),
-                  )
-                : ClipRRect(
+                  ),
+                )
+              : CustomPaint(
+                  painter: AngularGradientBorderPainter(),
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: AspectRatio(
-                      aspectRatio: _controller!.value.aspectRatio,
+                      aspectRatio: (_controller!.value.aspectRatio),
                       child: Chewie(
                         controller: _chewieController!,
                       ),
                     ),
                   ),
-          ),
+                ),
         ),
         if (_controller == null || !_controller!.value.isInitialized)
           const Center(
@@ -517,7 +523,7 @@ class AngularGradientBorderPainter extends CustomPainter {
         ],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 6;
+      ..strokeWidth = 4;
 
     final rect = RRect.fromRectAndRadius(
       Rect.fromLTWH(0, 0, size.width, size.height),
