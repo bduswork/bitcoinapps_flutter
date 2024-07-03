@@ -10,5 +10,5 @@ const double bottomNavBarBorderRadius = 16.0;
 const double bottomNavBarHeight = kBottomNavigationBarHeight;
 
 const double customDialogBorderRadius = 16.0;
-const double customDialogPadding = 10.0;
+const double customDialogPadding = 16.0;
 

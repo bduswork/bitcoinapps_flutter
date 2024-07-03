@@ -50,6 +50,9 @@ class DarkThemeColors {
   static const Color infoButtonIconColor = Color(0xFFFFFFFF);
   static const Color infoButtonBorderColor = Color(0xFFFFFFFF);
 
+  //three dot icon color
+  static const Color threeDotIconBgColor= Color(0xFFFFFFFF);
+
   //social button colors
   static const Color facebookBgColor = Color(0xFF3B5998);
   static const Color googleBgColor = Color(0xFFFFFFFF);
@@ -178,6 +181,9 @@ class LightThemeColors {
   static const Color infoButtonBgColor2 = Color(0xFF54BB31);
   static const Color infoButtonIconColor = Color(0xFFD5EE70);
   static const Color infoButtonBorderColor = Color(0xFFD5EE70);
+
+  //three dot icon color
+  static const Color threeDotIconBgColor= Color(0xFF58B485);
 
   //social button colors
   static const Color facebookBgColor = Color(0xFF3B5998);

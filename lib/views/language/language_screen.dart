@@ -131,7 +131,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     CustomRoundedButton(
                       title: "Custom Dialog", 
                       onPressed: () {
-                        DialogHelper().showCustomDialogBox(context, content: 'This is the content of the dialog.');
+                        DialogHelper().showCustomDialogBox(context, content: 'This is the content of the dialog. This is the content of the dialog. This is the content of the dialog. This is the content of the dialog. This is the content of the dialog. This is the content of the dialog. This is the content of the dialog.');
                       }, 
                       isPrimary: true
                     ),

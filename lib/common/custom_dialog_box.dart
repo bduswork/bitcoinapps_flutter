@@ -36,10 +36,10 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomInfoButton(),
+                      //const CustomInfoButton(size: 28,),
                       InkWell(
                         onTap: () {
                           Navigator.of(context).pop();
@@ -53,6 +53,8 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                       )
                     ],
                   ),
+                  const CustomInfoButton(size: 28,),
+                  const SizedBox(height: 20.0),
                   widget.title != null? Text(
                     widget.title!,
                     style: TextStyle(color: appThemeProvider.dialogTextColor, fontSize: 24.0, fontWeight: FontWeight.bold),
@@ -62,7 +64,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                     widget.content,
                     style: TextStyle(color: appThemeProvider.dialogTextColor, fontSize: 16.0),
                   ),
-                  const SizedBox(height: 24.0),
+                  const SizedBox(height: 30.0),
                 ],
               ),
             );
