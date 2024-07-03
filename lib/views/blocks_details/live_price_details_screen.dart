@@ -1,6 +1,6 @@
 import 'package:btcapp/common/app_background.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
-import 'package:btcapp/views/blocks_details/exp.dart';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -162,16 +162,9 @@ class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
   }
 
   _LivePriceDetailsScreenState();
-  late bool _enableSolidCandle;
-  late bool _toggleVisibility;
-  TrackballBehavior? _trackballBehavior;
 
   @override
   void initState() {
-    _enableSolidCandle = true;
-    _toggleVisibility = true;
-    _trackballBehavior = TrackballBehavior(
-        enable: true, activationMode: ActivationMode.singleTap);
     super.initState();
   }
 
@@ -476,4 +469,14 @@ class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
       ),
     );
   }
+}
+
+class ChartSampleData {
+  ChartSampleData({this.x, this.open, this.high, this.low, this.close});
+
+  final DateTime? x;
+  final double? open;
+  final double? high;
+  final double? low;
+  final double? close;
 }
