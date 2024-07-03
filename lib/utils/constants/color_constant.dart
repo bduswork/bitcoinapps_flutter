@@ -92,12 +92,40 @@ class DarkThemeColors {
   static const Color learnBitcoinSearchBarBorderColor = Color(0xFF35145D);
   static const Color learnBitcoinSearchBarHintTextColor = Color(0xFF888B9D);
   static const Color learnBitcoinSearchBarIconColor = Color(0xFFFFFFFF);
+
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF664BFB);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF664BFB);
 
   //app drawer colors
   static const Color appDrawerarItemSelectedColor = Color(0xFFFFFFFF);
   static const Color appDrawerTextColor = Colors.black;
+
+  static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF260A81);
+  static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF5830D5);
+  static const Color learnBitcoinChipBorderColor1= Color(0xFFFFC876);
+  static const Color learnBitcoinChipBorderColor2= Color(0xFF79FFF7);
+  static const Color learnBitcoinChipBorderColor3= Color(0xFF9F53FF);
+  static const Color learnBitcoinChipBorderColor4= Color(0xFFFF98E2);
+  static const Color learnBitcoinTextColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinButtonBackgroundColor = Colors.transparent;
+  static const Color learnBitcoinButtonTextColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinButtonBorderColor = Color(0xFF36AE3A);
+  static const Color learnBitcoinQuizOptionBackgroundColor = Color(0xFF362848);
+  static const Color learnBitcoinQuizOptionBorderColor = Color(0xFF870783);
+  static const Color learnBitcoinQuizOptionTextColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinQuizSelectedOptionBackgroundColor =
+      Color(0xFF9F53FF);
+  static const Color learnBitcoinQuizSelectedOptionBorderColor =
+      Color(0xFF9F53FF);
+  static const Color learnBitcoinQuizSelectedOptionTextColor =
+      Color(0xFFFFFFFF);
+  static const Color learnBitcoinQuizCorrectOptionColor = Color(0xFF36AE3A);
+  static const Color learnBitcoinQuizSubmitButtonColor1 = Color(0xFF9F53FF);
+  static const Color learnBitcoinQuizSubmitButtonColor2 = Color(0xFF5830D5);
+  static const Color learnBitcoinQuizSubmitButtonTextColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinQuizSubmitButtonBorderColor =
+      Color(0xFF9F53FF);
+
 }
 
 // light theme
@@ -194,7 +222,33 @@ class LightThemeColors {
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF58B485);
 
+
   //app drawer colors
   static const Color appDrawerarItemSelectedColor = Color((0xFF080319));
   static const Color appDrawerTextColor = Color(0xFFFFFFFF);
+
+  static const Color learnBitcoinChipBorderColor1= Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor2= Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor3= Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor4= Color(0xFF005603);
+  static const Color learnBitcoinTextColor = Color(0xFF000000);
+  static const Color learnBitcoinButtonBackgroundColor = Colors.transparent;
+  static const Color learnBitcoinButtonTextColor = Color(0xFF58B485);
+  static const Color learnBitcoinButtonBorderColor = Color(0xFF58B485);
+  static const Color learnBitcoinQuizOptionBackgroundColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinQuizOptionBorderColor = Color(0xFFE4E4E4);
+  static const Color learnBitcoinQuizOptionTextColor = Color(0xFF6D6D6D);
+  static const Color learnBitcoinQuizSelectedOptionBackgroundColor =
+      Color(0xFFD5EE70);
+  static const Color learnBitcoinQuizSelectedOptionBorderColor =
+      Color(0xFF58B485);
+  static const Color learnBitcoinQuizSelectedOptionTextColor =
+      Color(0xFF4A4A4A);
+  static const Color learnBitcoinQuizCorrectOptionColor = Color(0xFF36AE3A);
+  static const Color learnBitcoinQuizSubmitButtonColor1 = Color(0xFF58B485);
+  static const Color learnBitcoinQuizSubmitButtonColor2 = Color(0xFF58B485);
+  static const Color learnBitcoinQuizSubmitButtonTextColor = Color(0xFFFFFFFF);
+  static const Color learnBitcoinQuizSubmitButtonBorderColor =
+      Color(0xFF58B485);
+
 }
