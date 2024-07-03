@@ -94,10 +94,10 @@ class DarkThemeColors {
   static const Color learnBitcoinSearchBarIconColor = Color(0xFFFFFFFF);
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF260A81);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF5830D5);
-  static const Color learnBitcoinChipBorderColor1= Color(0xFFFFC876);
-  static const Color learnBitcoinChipBorderColor2= Color(0xFF79FFF7);
-  static const Color learnBitcoinChipBorderColor3= Color(0xFF9F53FF);
-  static const Color learnBitcoinChipBorderColor4= Color(0xFFFF98E2);
+  static const Color learnBitcoinChipBorderColor1 = Color(0xFFFFC876);
+  static const Color learnBitcoinChipBorderColor2 = Color(0xFF79FFF7);
+  static const Color learnBitcoinChipBorderColor3 = Color(0xFF9F53FF);
+  static const Color learnBitcoinChipBorderColor4 = Color(0xFFFF98E2);
   static const Color learnBitcoinTextColor = Color(0xFFFFFFFF);
   static const Color learnBitcoinButtonBackgroundColor = Colors.transparent;
   static const Color learnBitcoinButtonTextColor = Color(0xFFFFFFFF);
@@ -212,10 +212,10 @@ class LightThemeColors {
   static const Color learnBitcoinSearchBarIconColor = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF58B485);
-  static const Color learnBitcoinChipBorderColor1= Color(0xFF005603);
-  static const Color learnBitcoinChipBorderColor2= Color(0xFF005603);
-  static const Color learnBitcoinChipBorderColor3= Color(0xFF005603);
-  static const Color learnBitcoinChipBorderColor4= Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor1 = Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor2 = Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor3 = Color(0xFF005603);
+  static const Color learnBitcoinChipBorderColor4 = Color(0xFF005603);
   static const Color learnBitcoinTextColor = Color(0xFF000000);
   static const Color learnBitcoinButtonBackgroundColor = Colors.transparent;
   static const Color learnBitcoinButtonTextColor = Color(0xFF58B485);
@@ -226,7 +226,7 @@ class LightThemeColors {
   static const Color learnBitcoinQuizSelectedOptionBackgroundColor =
       Color(0xFFD5EE70);
   static const Color learnBitcoinQuizSelectedOptionBorderColor =
-      Color(0xFF58B485);
+      Color(0xFFE4E4E4);
   static const Color learnBitcoinQuizSelectedOptionTextColor =
       Color(0xFF4A4A4A);
   static const Color learnBitcoinQuizCorrectOptionColor = Color(0xFF36AE3A);
