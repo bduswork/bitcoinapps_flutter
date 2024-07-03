@@ -228,6 +228,18 @@ class AppThemeProvider extends ChangeNotifier {
   Color get learnBitcoinChipBackgroundColor2 => _isDarkMode
       ? DarkThemeColors.learnBitcoinChipBackgroundColor2
       : LightThemeColors.learnBitcoinChipBackgroundColor2;
+  Color get learnBitcoinChipBorderColor1 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinChipBorderColor1
+      : LightThemeColors.learnBitcoinChipBorderColor1;
+  Color get learnBitcoinChipBorderColor2 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinChipBorderColor2
+      : LightThemeColors.learnBitcoinChipBorderColor2;
+  Color get learnBitcoinChipBorderColor3 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinChipBorderColor3
+      : LightThemeColors.learnBitcoinChipBorderColor3;
+  Color get learnBitcoinChipBorderColor4 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinChipBorderColor4
+      : LightThemeColors.learnBitcoinChipBorderColor4;
   Color get learnBitcoinTextColor => _isDarkMode
       ? DarkThemeColors.learnBitcoinTextColor
       : LightThemeColors.learnBitcoinTextColor;
@@ -240,4 +252,37 @@ class AppThemeProvider extends ChangeNotifier {
   Color get learnBitcoinButtonBorderColor => _isDarkMode
       ? DarkThemeColors.learnBitcoinButtonBorderColor
       : LightThemeColors.learnBitcoinButtonBorderColor;
+  Color get learnBitcoinQuizOptionBackgroundColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizOptionBackgroundColor
+      : LightThemeColors.learnBitcoinQuizOptionBackgroundColor;
+  Color get learnBitcoinQuizOptionBorderColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizOptionBorderColor
+      : LightThemeColors.learnBitcoinQuizOptionBorderColor;
+  Color get learnBitcoinQuizOptionTextColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizOptionTextColor
+      : LightThemeColors.learnBitcoinQuizOptionTextColor;
+  Color get learnBitcoinQuizSelectedOptionBackgroundColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSelectedOptionBackgroundColor
+      : LightThemeColors.learnBitcoinQuizSelectedOptionBackgroundColor;
+  Color get learnBitcoinQuizSelectedOptionBorderColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSelectedOptionBorderColor
+      : LightThemeColors.learnBitcoinQuizSelectedOptionBorderColor;
+  Color get learnBitcoinQuizSelectedOptionTextColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSelectedOptionTextColor
+      : LightThemeColors.learnBitcoinQuizSelectedOptionTextColor;
+  Color get learnBitcoinQuizCorrectOptionColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizCorrectOptionColor
+      : LightThemeColors.learnBitcoinQuizCorrectOptionColor;
+  Color get learnBitcoinQuizSubmitButtonColor1 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSubmitButtonColor1
+      : LightThemeColors.learnBitcoinQuizSubmitButtonColor1;
+  Color get learnBitcoinQuizSubmitButtonColor2 => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSubmitButtonColor2
+      : LightThemeColors.learnBitcoinQuizSubmitButtonColor2;
+  Color get learnBitcoinQuizSubmitButtonTextColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSubmitButtonTextColor
+      : LightThemeColors.learnBitcoinQuizSubmitButtonTextColor;
+  Color get learnBitcoinQuizSubmitButtonBorderColor => _isDarkMode
+      ? DarkThemeColors.learnBitcoinQuizSubmitButtonBorderColor
+      : LightThemeColors.learnBitcoinQuizSubmitButtonBorderColor;
 }
