@@ -4,7 +4,7 @@ import 'package:btcapp/common/custom_rounder_button.dart';
 import 'package:btcapp/enum/border_side_type.dart';
 import 'package:btcapp/utils/constants/color_constant.dart';
 import 'package:btcapp/utils/local_storage/app_sharedpreference.dart';
-import 'package:btcapp/views/learn_bitcoin/learn_bitcoin_screen.dart';
+//import 'package:btcapp/views/learn_bitcoin/learn_bitcoin_screen.dart';
 import 'package:btcapp/views/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +56,7 @@ class OnboardingSlide extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 7,
+                flex: 6,
                 child: Container(
                   padding: const EdgeInsets.all(50.0),
                   width: double.infinity,
@@ -177,12 +177,12 @@ class OnboardingSlide extends StatelessWidget {
                                     if (currentIndex == 0) {
                                       AppSharedPreferences()
                                           .setIsOnboarded(true);
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const LearnBitcoinScreen(),
-                                        ),
-                                      );
+                                      // Navigator.of(context).pushReplacement(
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) =>
+                                      //         const LearnBitcoinScreen(),
+                                      //   ),
+                                      // );
                                     } else if (currentIndex < 2) {
                                       pageController.animateToPage(
                                         currentIndex + 1,
