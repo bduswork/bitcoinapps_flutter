@@ -17,6 +17,8 @@ const String createDashboardIcon = "assets/images/icons/create-dashboard-icon.sv
 const String learnBitcoinIcon = "assets/images/icons/learn-bitcoin-icon.svg";
 const String profileIcon = "assets/images/icons/profile-icon.svg";
 
+//
+const String threeDotHorizontalIcon = "assets/images/icons/three-dot-horizontal.svg";
 
 const String closeIcon = "assets/images/icons/close-icon.svg";
 

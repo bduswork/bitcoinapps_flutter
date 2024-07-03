@@ -1,6 +1,7 @@
 import 'package:btcapp/providers/auth/otp_provider.dart';
 import 'package:btcapp/providers/auth/signin_provider.dart';
 import 'package:btcapp/providers/auth/signup_provider.dart';
+import 'package:btcapp/providers/block_provider/block_provider.dart';
 import 'package:btcapp/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:btcapp/providers/language/language_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
@@ -15,6 +16,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => AppThemeProvider()),
+    ChangeNotifierProvider(create: (context) => BlockProvider()),
     ChangeNotifierProvider(create: (context) => LanguageProvider()),
     ChangeNotifierProvider(create: (context) => BottomNavBarProvider()),
     ChangeNotifierProvider(create: (context) => SigninProvider()),
