@@ -10,6 +10,7 @@
     "app_drawer_dashboards" : "Dashboards",
     "app_drawer_currency" : "Currency",
     "app_drawer_dark_mode" : "Dark Mode",
+    "app_drawer_light_mode" : "Light Mode",
     "app_drawer_logout" : "Logout",
 
     "app_title" : "My Bitcoin Canvas",

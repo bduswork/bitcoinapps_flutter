@@ -3,21 +3,21 @@ import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CreateDashboardScreen extends StatefulWidget {
-  const CreateDashboardScreen({super.key});
+class PointScreen extends StatefulWidget {
+  const PointScreen({super.key});
 
   @override
-  State<CreateDashboardScreen> createState() => _CreateDashboardScreenState();
+  State<PointScreen> createState() => _PointScreenState();
 }
 
-class _CreateDashboardScreenState extends State<CreateDashboardScreen> {
+class _PointScreenState extends State<PointScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Provider.of<AppThemeProvider>(context).backgroundColor,
         title: Text(
-          'Dashboard ',
+          'Points',
           style: TextStyle(
               color: Provider.of<AppThemeProvider>(context).textColor),
         ),
@@ -37,7 +37,7 @@ class _CreateDashboardScreenState extends State<CreateDashboardScreen> {
         builder: (context, appThemeProvider, _) {
           return Center(
             child: Text(
-              "Create Dashboard Screen",
+              "Points",
               style: TextStyle(color: appThemeProvider.textColor, fontSize: 30),
             ),
           );

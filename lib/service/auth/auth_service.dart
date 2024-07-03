@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:btcapp/utils/env.dart';
 import 'package:http/http.dart' as http;
 
-class SignupService {
+class AuthService {
   Future<Map<String, dynamic>> registerUser(
       String name, String username, String email, String password) async {
     print("Service called");
@@ -29,6 +29,29 @@ class SignupService {
     //   return jsonDecode(response.body);
     // } else {
     //   throw Exception('Failed to register user');
+    // }
+  }
+
+  Future<dynamic> signInUser(String username, String password) async {
+    final url = Uri.parse('$baseUrl/users/login');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'username': username,
+        'password': password,
+      }),
+    );
+    //print("MY_RESPNSE: " + response.body.toString());
+
+    return response;
+
+    // if (response.statusCode == 200) {
+    //   return jsonDecode(response.body);
+    // } else {
+    //   throw Exception('Failed to sign in user');
     // }
   }
 }

@@ -1,5 +1,11 @@
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
+import 'package:btcapp/views/auth/signin_screen.dart';
+import 'package:btcapp/views/create_dashboard/create_dashboard_screen.dart';
 import 'package:btcapp/views/language/language_screen.dart';
+import 'package:btcapp/views/learn_bitcoin/learn_bitcoin_screen.dart';
+import 'package:btcapp/views/more_blocks/more_block_screen.dart';
+import 'package:btcapp/views/point/point_screen.dart';
+import 'package:btcapp/views/setting/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -44,6 +50,10 @@ class _AppDrawerState extends State<AppDrawer> {
                 icon: Icons.widgets_outlined,
                 title: AppLocalizations.of(context)!.app_drawer_more_blocks,
                 appThemeProvider: appThemeProvider,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MoreBlocksView()));
+                },
               ),
               _buildListTile(
                 context,
@@ -51,6 +61,10 @@ class _AppDrawerState extends State<AppDrawer> {
                 icon: Icons.book_outlined,
                 title: AppLocalizations.of(context)!.app_drawer_learn_bitcoin,
                 appThemeProvider: appThemeProvider,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LearnBitcoinScreen()));
+                },
               ),
               _buildListTile(
                 context,
@@ -58,6 +72,10 @@ class _AppDrawerState extends State<AppDrawer> {
                 icon: Icons.settings_outlined,
                 title: AppLocalizations.of(context)!.app_drawer_settings,
                 appThemeProvider: appThemeProvider,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SettingScreen()));
+                },
               ),
               _buildListTile(
                 context,
@@ -65,6 +83,10 @@ class _AppDrawerState extends State<AppDrawer> {
                 icon: Icons.star_outline,
                 title: AppLocalizations.of(context)!.app_drawer_points,
                 appThemeProvider: appThemeProvider,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const PointScreen()));
+                },
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -80,6 +102,10 @@ class _AppDrawerState extends State<AppDrawer> {
                 icon: Icons.dashboard_outlined,
                 title: AppLocalizations.of(context)!.app_drawer_dashboards,
                 appThemeProvider: appThemeProvider,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const CreateDashboardScreen()));
+                },
               ),
               _buildListTile(
                 context,
@@ -120,17 +146,27 @@ class _AppDrawerState extends State<AppDrawer> {
                 title: AppLocalizations.of(context)!.language,
                 appThemeProvider: appThemeProvider,
                 onTap: () {
+                  Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const LanguageScreen()));
                 },
               ),
-              _buildListTile(
-                context,
-                index: 7,
-                icon: Icons.logout,
-                title: AppLocalizations.of(context)!.app_drawer_logout,
-                appThemeProvider: appThemeProvider,
-              ),
+              const SizedBox(height: 140),
+              appThemeProvider.isLoggedIn == true
+                  ? _buildListTile(
+                      context,
+                      index: 7,
+                      icon: Icons.logout,
+                      title: AppLocalizations.of(context)!.app_drawer_logout,
+                      appThemeProvider: appThemeProvider,
+                      onTap: () {
+                        // Handle logout
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignInView(),
+                        ));
+                      },
+                    )
+                  : Container(),
             ],
           );
         },
@@ -147,40 +183,49 @@ class _AppDrawerState extends State<AppDrawer> {
     VoidCallback? onTap,
   }) {
     bool isSelected = _selectedIndex == index;
-    return InkWell(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-        if (onTap != null) {
-          onTap();
-        }
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          children: [
-            Icon(icon,
-                color: isSelected ? Colors.black : appThemeProvider.textColor),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(
-                    color:
-                        isSelected ? Colors.black : appThemeProvider.textColor),
-              ),
+    return Consumer<AppThemeProvider>(
+      builder: (context, appThemeProvider, _) {
+        return InkWell(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () {
+            setState(() {
+              _selectedIndex = index;
+            });
+            if (onTap != null) {
+              onTap();
+            }
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? appThemeProvider.appDrawerarItemSelectedColor
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(10),
             ),
-          ],
-        ),
-      ),
+            child: Row(
+              children: [
+                Icon(icon,
+                    color: isSelected
+                        ? appThemeProvider.appDrawerTextColor
+                        : appThemeProvider.textColor),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        color: isSelected
+                            ? appThemeProvider.appDrawerTextColor
+                            : appThemeProvider.textColor),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
