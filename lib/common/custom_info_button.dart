@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomInfoButton extends StatefulWidget {
-  const CustomInfoButton({super.key});
+  final double size;
+  const CustomInfoButton({super.key, required this.size});
 
   @override
   State<CustomInfoButton> createState() => _CustomInfoButtonState();
@@ -15,13 +16,13 @@ class _CustomInfoButtonState extends State<CustomInfoButton> {
     return Consumer<AppThemeProvider>(
       builder: (context, appThemeProvider, _) {
         return Container(
-          // height: 24,
-          // width: 24,
-          padding: const EdgeInsets.all(10.0),
+          height: widget.size,
+          width: widget.size,
+          //padding: const EdgeInsets.all(10.0),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             border: Border.all(
-              width: 2,
+              width: 1.3,
               color: appThemeProvider.infoButtonBorderColor
             ),
             gradient: LinearGradient(
@@ -34,7 +35,7 @@ class _CustomInfoButtonState extends State<CustomInfoButton> {
             ),
             shape: BoxShape.circle
           ),
-          child: Text("i", style: TextStyle(color: appThemeProvider.infoButtonIconColor),),
+          child: Text("i", style: TextStyle(color: appThemeProvider.infoButtonIconColor, fontSize: widget.size*0.5+2),),
         );
       }
     );
