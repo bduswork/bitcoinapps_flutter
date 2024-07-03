@@ -33,121 +33,124 @@ class _NewPasswordViewState extends State<NewPasswordView> {
       body: AppBackground(
         child: Consumer2<AppThemeProvider, OtpProvider>(
           builder: (context, appThemeProvider, otpProvider, _) {
-            return Stack(
-              children: [
-                CustomPaint(
-                  size: Size(
-                    MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height,
+            return SingleChildScrollView(
+              child: Stack(
+                children: [
+                  CustomPaint(
+                    size: Size(
+                      MediaQuery.of(context).size.width,
+                      MediaQuery.of(context).size.height,
+                    ),
+                    painter: BackgroundPainter(),
                   ),
-                  painter: BackgroundPainter(),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Reset your password',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            'At least 8 characters, with uppercase and lowercase letters',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 14,
-                            ),
-                          ),
-                          const SizedBox(height: 32),
-                          CustomTextField(
-                            title: "Password",
-                            controller: passwordCtrl,
-                            hintText: "Password",
-                            obscureText: !otpProvider.isPasswordVisible,
-                            suffixIcon: InkWell(
-                              child: Icon(
-                                otpProvider.isPasswordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: appThemeProvider.textColor,
-                                size: 20,
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Reset your password',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
                               ),
-                              onTap: () {
-                                setState(() {
-                                  otpProvider.togglePasswordVisibility();
-                                });
-                              },
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Password is required";
-                              } else if (!otpProvider
-                                  .isPasswordCompliant(value)) {
-                                return "Password must be at least 8 characters long and contain uppercase and lowercase letters.";
-                              }
-                              return null;
-                            },
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                          ),
-                          const SizedBox(height: 16),
-                          CustomTextField(
-                            title: "Confirm Password",
-                            controller: confirmpasswordCtrl,
-                            hintText: "Confirm Password",
-                            obscureText: !otpProvider.isPasswordVisible,
-                            suffixIcon: InkWell(
-                              child: Icon(
-                                otpProvider.isPasswordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: appThemeProvider.textColor,
-                                size: 20,
+                            const SizedBox(height: 8),
+                            const Text(
+                              'At least 8 characters, with uppercase and lowercase letters',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 14,
                               ),
-                              onTap: () {
-                                setState(() {
-                                  otpProvider.togglePasswordVisibility();
-                                });
-                              },
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Confirm Password is required";
-                              } else if (value != passwordCtrl.text) {
-                                return "Passwords do not match";
-                              }
-                              return null;
-                            },
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                          ),
-                          const SizedBox(height: 32),
-                          CustomRectangleButton(
-                            title: 'Save',
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const SignInView(),
-                                ));
-                              }
-                            },
-                            isPrimary: true,
-                          ),
-                        ],
+                            const SizedBox(height: 32),
+                            CustomTextField(
+                              title: "Password",
+                              controller: passwordCtrl,
+                              hintText: "Password",
+                              obscureText: !otpProvider.isPasswordVisible,
+                              suffixIcon: InkWell(
+                                child: Icon(
+                                  otpProvider.isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: appThemeProvider.textColor,
+                                  size: 20,
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    otpProvider.togglePasswordVisibility();
+                                  });
+                                },
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "Password is required";
+                                } else if (!otpProvider
+                                    .isPasswordCompliant(value)) {
+                                  return "Password must be at least 8 characters long and contain uppercase and lowercase letters.";
+                                }
+                                return null;
+                              },
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                            ),
+                            const SizedBox(height: 16),
+                            CustomTextField(
+                              title: "Confirm Password",
+                              controller: confirmpasswordCtrl,
+                              hintText: "Confirm Password",
+                              obscureText: !otpProvider.isPasswordVisible,
+                              suffixIcon: InkWell(
+                                child: Icon(
+                                  otpProvider.isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: appThemeProvider.textColor,
+                                  size: 20,
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    otpProvider.togglePasswordVisibility();
+                                  });
+                                },
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "Confirm Password is required";
+                                } else if (value != passwordCtrl.text) {
+                                  return "Passwords do not match";
+                                }
+                                return null;
+                              },
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                            ),
+                            const SizedBox(height: 32),
+                            CustomRectangleButton(
+                              title: 'Save',
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SignInView(),
+                                  ));
+                                }
+                              },
+                              isPrimary: true,
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),

@@ -21,75 +21,78 @@ class _ResetScreenViewState extends State<ResetScreenView> {
       body: AppBackground(
         child: Consumer<AppThemeProvider>(
           builder: (context, appThemeProvider, _) {
-            return Center(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      logoimage,
-                      width: 300,
-                      height: 300,
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'OTP Authentication',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: appThemeProvider.textColor,
+            return SingleChildScrollView(
+              child: Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        logoimage,
+                        width: 300,
+                        height: 300,
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'An authentication code will be sent to\n(+88) 0123 456 XXXX',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: appThemeProvider.textColor,
-                        fontSize: 16,
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    CustomRectangleButton(
-                      title: 'Get OTP',
-                      onPressed: () {
-                        // Navigate to another screen (replace with your navigation logic)
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const OtpView(),
-                        ));
-                      },
-                      isPrimary: true,
-                    ),
-                    const Spacer(), // This will take up remaining space
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Don’t have an account? ',
-                          style: TextStyle(color: appThemeProvider.textColor),
+                      const SizedBox(height: 20),
+                      Text(
+                        'OTP Authentication',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: appThemeProvider.textColor,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SignupView(),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        'An authentication code will be sent to\n(+88) 0123 456 XXXX',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: appThemeProvider.textColor,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      CustomRectangleButton(
+                        title: 'Get OTP',
+                        onPressed: () {
+                          // Navigate to OtpView
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const OtpView(),
+                          ));
+                        },
+                        isPrimary: true,
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don’t have an account? ',
+                            style: TextStyle(color: appThemeProvider.textColor),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const SignupView(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                color: appThemeProvider.textColor,
+                                fontWeight: FontWeight.bold,
                               ),
-                            );
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              color: appThemeProvider.textColor,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             );

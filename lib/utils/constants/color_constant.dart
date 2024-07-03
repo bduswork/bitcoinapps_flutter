@@ -92,6 +92,14 @@ class DarkThemeColors {
   static const Color learnBitcoinSearchBarBorderColor = Color(0xFF35145D);
   static const Color learnBitcoinSearchBarHintTextColor = Color(0xFF888B9D);
   static const Color learnBitcoinSearchBarIconColor = Color(0xFFFFFFFF);
+
+  static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF664BFB);
+  static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF664BFB);
+
+  //app drawer colors
+  static const Color appDrawerarItemSelectedColor = Color(0xFFFFFFFF);
+  static const Color appDrawerTextColor = Colors.black;
+
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF260A81);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF5830D5);
   static const Color learnBitcoinChipBorderColor1= Color(0xFFFFC876);
@@ -117,6 +125,7 @@ class DarkThemeColors {
   static const Color learnBitcoinQuizSubmitButtonTextColor = Color(0xFFFFFFFF);
   static const Color learnBitcoinQuizSubmitButtonBorderColor =
       Color(0xFF9F53FF);
+
 }
 
 // light theme
@@ -212,6 +221,12 @@ class LightThemeColors {
   static const Color learnBitcoinSearchBarIconColor = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF58B485);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF58B485);
+
+
+  //app drawer colors
+  static const Color appDrawerarItemSelectedColor = Color((0xFF080319));
+  static const Color appDrawerTextColor = Color(0xFFFFFFFF);
+
   static const Color learnBitcoinChipBorderColor1= Color(0xFF005603);
   static const Color learnBitcoinChipBorderColor2= Color(0xFF005603);
   static const Color learnBitcoinChipBorderColor3= Color(0xFF005603);
@@ -235,4 +250,5 @@ class LightThemeColors {
   static const Color learnBitcoinQuizSubmitButtonTextColor = Color(0xFFFFFFFF);
   static const Color learnBitcoinQuizSubmitButtonBorderColor =
       Color(0xFF58B485);
+
 }
