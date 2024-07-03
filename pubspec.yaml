@@ -47,6 +47,8 @@ dependencies:
 
   syncfusion_flutter_charts: ^26.1.39
   dropdown_button2: ^2.3.9
+  video_player: ^2.9.1
+  chewie: ^1.8.1
 
 dev_dependencies:
   flutter_test:

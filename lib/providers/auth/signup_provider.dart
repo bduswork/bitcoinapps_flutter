@@ -1,4 +1,4 @@
-import 'package:btcapp/service/auth/signup_service.dart';
+import 'package:btcapp/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SignupProvider extends ChangeNotifier{
@@ -25,7 +25,7 @@ class SignupProvider extends ChangeNotifier{
     notifyListeners();
 
     try {
-      final response = await SignupService().registerUser(name, username, email, password);
+      final response = await AuthService().registerUser(name, username, email, password);
       _message = response['message'];
       _status = response['status'];
     } catch (e) {
