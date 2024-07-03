@@ -39,4 +39,21 @@ class AppSharedPreferences{
     return null;
   }
 
+  // setter getter for User Is Logged In
+  Future setIsUserLoggedIn(bool isLoggedIn) async {
+    await prefs.then((value) => value.setBool('ISLOGGEDIN', isLoggedIn));
+  }
+  Future getIsUserLoggedIn() async {
+    return await prefs.then((value) => value.getBool("ISLOGGEDIN"));
+  }
+  
+
+  // setter getter for User Is Onboarded
+  Future setIsOnboarded(bool isOnBoarded) async {
+    await prefs.then((value) => value.setBool('ISONBOARDED', isOnBoarded));
+  }
+  Future getIsOnboarded() async {
+    return await prefs.then((value) => value.getBool("ISONBOARDED"));
+  }
+
 }

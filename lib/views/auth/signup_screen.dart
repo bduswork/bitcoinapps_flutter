@@ -111,8 +111,7 @@ class _SignupViewState extends State<SignupView> {
                           validator: (p0) {
                             if (p0!.isEmpty) {
                               return "Password is required";
-                            } else if (!context
-                                .watch<OtpProvider>()
+                            } else if (!Provider.of<OtpProvider>(context, listen: false)
                                 .isPasswordCompliant(p0)) {
                               return "Password must be at least 8 characters long and contain uppercase and lowercase letters.";
                             }

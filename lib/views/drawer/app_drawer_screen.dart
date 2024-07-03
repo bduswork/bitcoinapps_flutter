@@ -146,24 +146,27 @@ class _AppDrawerState extends State<AppDrawer> {
                 title: AppLocalizations.of(context)!.language,
                 appThemeProvider: appThemeProvider,
                 onTap: () {
+                  Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const LanguageScreen()));
                 },
               ),
               const SizedBox(height: 140),
-              _buildListTile(
-                context,
-                index: 7,
-                icon: Icons.logout,
-                title: AppLocalizations.of(context)!.app_drawer_logout,
-                appThemeProvider: appThemeProvider,
-                onTap: () {
-                  // Handle logout
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const SignInView(),
-                  ));
-                },
-              ),
+              appThemeProvider.isLoggedIn == true
+                  ? _buildListTile(
+                      context,
+                      index: 7,
+                      icon: Icons.logout,
+                      title: AppLocalizations.of(context)!.app_drawer_logout,
+                      appThemeProvider: appThemeProvider,
+                      onTap: () {
+                        // Handle logout
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignInView(),
+                        ));
+                      },
+                    )
+                  : Container(),
             ],
           );
         },

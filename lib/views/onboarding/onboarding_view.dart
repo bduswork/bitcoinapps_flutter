@@ -14,7 +14,7 @@ class OnboardingView extends StatefulWidget {
 class _OnboardingViewState extends State<OnboardingView> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
-  late Timer _timer;
+  Timer? _timer;
 
   void _onPageChanged(int page) {
     setState(() {
@@ -24,7 +24,7 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      if (currentIndex < 2) {
+      if (_pageController.hasClients && currentIndex < 2) {
         currentIndex++;
         _pageController.animateToPage(
           currentIndex,
@@ -43,12 +43,14 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   void initState() {
     super.initState();
-    _startTimer();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _startTimer();
+    });
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     _pageController.dispose();
     super.dispose();
   }
@@ -67,6 +69,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             imagePath: onboarding1,
             currentIndex: currentIndex,
             pageIndex: 0,
+            pageController: _pageController,
           ),
           OnboardingSlide(
             title: 'Explore Bitcoin with Us',
@@ -75,6 +78,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             imagePath: onboarding2,
             currentIndex: currentIndex,
             pageIndex: 1,
+            pageController: _pageController,
           ),
           OnboardingSlide(
             title: 'Join the Bitcoin Community',
@@ -83,6 +87,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             imagePath: onboarding3,
             currentIndex: currentIndex,
             pageIndex: 2,
+            pageController: _pageController,
           ),
         ],
       ),
