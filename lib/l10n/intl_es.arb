@@ -11,8 +11,9 @@
     "app_drawer_currency" : "Moneda",
     "app_drawer_dark_mode" : "Modo Oscuro",
     "app_drawer_light_mode" : "modo de luz",
-    "app_drawer_settings" : "Configuración",
     "app_drawer_logout" : "Cerrar Sesión",
+
+    "app_drawer_signin" : "Iniciar sesión",
 
     "app_title" : "Mi lienzo de Bitcoin",
 

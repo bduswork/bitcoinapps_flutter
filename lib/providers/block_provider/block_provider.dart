@@ -31,6 +31,15 @@ class BlockProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  void swapBlocks(int index) {
+    if (index > 0 && index < _blockModel!.data.length) {
+      final temp = _blockModel!.data[0];
+      _blockModel!.data[0] = _blockModel!.data[index];
+      _blockModel!.data[index] = temp;
+      notifyListeners();
+    }
+  }
+
 
   // String _fullBlockTitle = "";
   // String get fullBlockTitle => _fullBlockTitle;

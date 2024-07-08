@@ -133,20 +133,6 @@ class AppThemeProvider extends ChangeNotifier {
   Color get threeDotIconBgColor => _isDarkMode ? DarkThemeColors.threeDotIconBgColor : LightThemeColors.threeDotIconBgColor;
 
 
-  Color get infoButtonBgColor1 => _isDarkMode
-      ? DarkThemeColors.infoButtonBgColor1
-      : LightThemeColors.infoButtonBgColor1;
-  Color get infoButtonBgColor2 => _isDarkMode
-      ? DarkThemeColors.infoButtonBgColor2
-      : LightThemeColors.infoButtonBgColor2;
-  Color get infoButtonIconColor => _isDarkMode
-      ? DarkThemeColors.infoButtonIconColor
-      : LightThemeColors.infoButtonIconColor;
-  Color get infoButtonBorderColor => _isDarkMode
-      ? DarkThemeColors.infoButtonBorderColor
-      : LightThemeColors.infoButtonBorderColor;
-
-
   //social button colors
   Color get facebookBgColor => _isDarkMode
       ? DarkThemeColors.facebookBgColor

@@ -13,6 +13,8 @@
     "app_drawer_light_mode" : "Light Mode",
     "app_drawer_logout" : "Logout",
 
+    "app_drawer_signin" : "Sign In",
+
     "app_title" : "My Bitcoin Canvas",
     
     "dark_mode" : "Dark Mode",
