@@ -1,6 +1,7 @@
+import 'package:btcapp/views/interest/interest_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
 import 'package:btcapp/views/welcome/welcome_screen.dart';
-import 'package:flutter/material.dart';
 import 'dart:async';
 import 'onboarding_slide.dart';
 
@@ -40,6 +41,10 @@ class _OnboardingViewState extends State<OnboardingView> {
     });
   }
 
+  void _stopTimer() {
+    _timer?.cancel();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -70,6 +75,17 @@ class _OnboardingViewState extends State<OnboardingView> {
             currentIndex: currentIndex,
             pageIndex: 0,
             pageController: _pageController,
+            onShowModal: () {
+              _stopTimer();
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (BuildContext context) {
+                  return const InterestsModal();
+                },
+              ).whenComplete(() => _startTimer());
+            },
           ),
           OnboardingSlide(
             title: 'Explore Bitcoin with Us',
@@ -79,6 +95,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             currentIndex: currentIndex,
             pageIndex: 1,
             pageController: _pageController,
+            onShowModal: () {},
           ),
           OnboardingSlide(
             title: 'Join the Bitcoin Community',
@@ -88,6 +105,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             currentIndex: currentIndex,
             pageIndex: 2,
             pageController: _pageController,
+            onShowModal: () {},
           ),
         ],
       ),
