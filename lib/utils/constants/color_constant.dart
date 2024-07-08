@@ -99,9 +99,6 @@ class DarkThemeColors {
   static const Color learnBitcoinChipBackgroundColor1 = Color(0xFF260A81);
   static const Color learnBitcoinChipBackgroundColor2 = Color(0xFF5830D5);
 
-
- 
-
   //app drawer colors
   static const Color appDrawerarItemSelectedColor = Color(0xFFFFFFFF);
   static const Color appDrawerTextColor = Colors.black;

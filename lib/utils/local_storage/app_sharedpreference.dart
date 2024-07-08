@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:btcapp/model/usermodel/user_model.dart';
+import 'package:btcapp/models/user_model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSharedPreferences{
