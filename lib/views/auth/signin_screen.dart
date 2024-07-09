@@ -5,7 +5,6 @@ import 'package:btcapp/common/custom_text_field.dart';
 import 'package:btcapp/providers/auth/signin_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
-import 'package:btcapp/utils/local_storage/app_sharedpreference.dart';
 import 'package:btcapp/views/auth/reset_screen.dart';
 import 'package:btcapp/views/auth/signup_screen.dart';
 import 'package:btcapp/views/bottom_nav_bar/bottom_nav_bar_screen.dart';
@@ -148,7 +147,8 @@ class _SignInViewState extends State<SignInView> {
                                     ),
                                   );
 
-                                  AppSharedPreferences().setIsUserLoggedIn(true);
+                                  //AppSharedPreferences().setIsUserLoggedIn(true);
+                                  appThemeProvider.setIsLoggedIn(true);
 
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>

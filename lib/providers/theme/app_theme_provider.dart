@@ -15,6 +15,12 @@ class AppThemeProvider extends ChangeNotifier {
     _loadThemePreference();
   }
 
+  void setIsLoggedIn(bool value) {
+    _isLoggedIn = value;
+    AppSharedPreferences().setIsUserLoggedIn(value);
+    notifyListeners();
+  }
+
   Future<void> _loadThemePreference() async {
     _isDarkMode = await AppSharedPreferences().getIsDarkMode() ??
         true; // Default to true (dark mode)

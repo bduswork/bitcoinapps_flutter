@@ -20,7 +20,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<BottomNavBarProvider>().selectedIndex = 0;
+      //context.read<BottomNavBarProvider>().selectedIndex = 0;
     });
   }
 

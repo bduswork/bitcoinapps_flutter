@@ -2,10 +2,10 @@ import 'package:btcapp/common/app_background.dart';
 import 'package:btcapp/common/custom_gradient_border.dart';
 import 'package:btcapp/common/custom_rounder_button.dart';
 import 'package:btcapp/enum/border_side_type.dart';
+import 'package:btcapp/views/bottom_nav_bar/bottom_nav_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:btcapp/utils/constants/color_constant.dart';
 import 'package:btcapp/utils/local_storage/app_sharedpreference.dart';
-import 'package:btcapp/views/welcome/welcome_screen.dart';
 
 class OnboardingSlide extends StatelessWidget {
   final String title;
@@ -160,7 +160,7 @@ class OnboardingSlide extends StatelessWidget {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const WelcomeScreen(),
+                                                const BottomNavBarScreen(),
                                           ),
                                         );
                                       }
@@ -189,7 +189,7 @@ class OnboardingSlide extends StatelessWidget {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const WelcomeScreen(),
+                                                const BottomNavBarScreen(),
                                           ),
                                         );
                                       }

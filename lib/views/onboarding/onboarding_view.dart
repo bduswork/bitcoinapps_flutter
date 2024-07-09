@@ -1,7 +1,7 @@
+import 'package:btcapp/views/bottom_nav_bar/bottom_nav_bar_screen.dart';
 import 'package:btcapp/views/interest/interest_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
-import 'package:btcapp/views/welcome/welcome_screen.dart';
 import 'dart:async';
 import 'onboarding_slide.dart';
 
@@ -35,7 +35,7 @@ class _OnboardingViewState extends State<OnboardingView> {
       } else {
         timer.cancel();
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+          MaterialPageRoute(builder: (context) => const BottomNavBarScreen()),
         );
       }
     });
