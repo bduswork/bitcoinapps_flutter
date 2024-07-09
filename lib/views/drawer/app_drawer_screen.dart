@@ -175,6 +175,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       appThemeProvider: appThemeProvider,
                       onTap: () {
                         // Handle logout
+                        appThemeProvider.setIsLoggedIn(false);
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const SignInView(),
                         ));

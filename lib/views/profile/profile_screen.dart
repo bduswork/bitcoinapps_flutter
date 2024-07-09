@@ -172,7 +172,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 icon: Icons.logout,
                                 title: 'Logout',
                                 subtitle: '',
-                                onTap: () {},
+                                onTap: () {
+                                  appThemeProvider.setIsLoggedIn(false);
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SignInView(),
+                                  ));
+                                },
                               )
                             : ListItem(
                                 icon: Icons.login,
