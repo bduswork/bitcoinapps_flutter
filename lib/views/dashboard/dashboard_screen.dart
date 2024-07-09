@@ -1,5 +1,6 @@
 import 'package:btcapp/common/app_background.dart';
 import 'package:btcapp/common/custom_info_button.dart';
+import 'package:btcapp/common/custom_line_chart.dart';
 import 'package:btcapp/providers/block_provider/block_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
@@ -166,13 +167,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                       const SizedBox(
-                                        height: 2,
+                                        height: 1,
                                       ),
                                       Text(
                                         blockProvider.isLoading? "Live Price" : (blockProvider.blockModel?.data[0].price == null? "" : blockProvider.blockModel!.data[0].price.toString()),
                                         style: TextStyle(
                                             color: appThemeProvider.textColor,
-                                            fontSize: 24,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
@@ -235,7 +236,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           itemCount: blockProvider.blockModel?.data.length?? 10,
                           itemBuilder: (BuildContext context, int index) {
                           index++;
-                          bool isLeftContainer = index % 2 == 0;
+                          bool isLeftBlock = index % 2 != 0;
                           int totalLength = blockProvider.blockModel?.data.length?? 10;
                           if (index < totalLength) {
                             return InkWell(
@@ -248,7 +249,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   borderStrokeWidth: blockBorderStrokeWidthForFullBlock,
                                   bgColor: appThemeProvider.blockBackgroundColor,
                                   linearGradient: LinearGradient(
-                                    colors: isLeftContainer
+                                    colors: isLeftBlock
                                         ? [
                                             appThemeProvider.blockBorderColorTop,
                                             appThemeProvider.blockBorderColorBottom,
@@ -271,38 +272,72 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              blockProvider.blockModel?.data[index].subMenuName?? "Block Name",
+                                              style: TextStyle(
+                                                  color: appThemeProvider.textColor,
+                                                  fontSize: 14),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const SizedBox(
+                                              height: 1,
+                                            ),
+                                            Text(
+                                              blockProvider.isLoading? "Live Price" : (blockProvider.blockModel?.data[index].price == null? "" : blockProvider.blockModel!.data[index].price.toString()),
+                                              style: TextStyle(
+                                                  color: appThemeProvider.textColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+
                                       Expanded(
                                         child: Container(
                                           padding: const EdgeInsets.all(0),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                          child: Row(
                                             children: [
-                                              Text(
-                                                blockProvider.blockModel?.data[index].subMenuName?? "Block Name",
-                                                style: TextStyle(
-                                                    color: appThemeProvider.textColor,
-                                                    fontSize: 14),
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
+                                              Expanded(
+                                                flex: 2,
+                                                child: Container()
                                               ),
-                                              const SizedBox(
-                                                height: 2,
-                                              ),
-                                              Text(
-                                                blockProvider.isLoading? "Live Price" : (blockProvider.blockModel?.data[index].price == null? "" : blockProvider.blockModel!.data[index].price.toString()),
-                                                style: TextStyle(
-                                                    color: appThemeProvider.textColor,
-                                                    fontSize: 24,
-                                                    fontWeight: FontWeight.bold),
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
+                                              Expanded(
+                                                flex: 3,
+                                                child: !blockProvider.isLoading? Container(
+                                                  height: double.infinity,
+                                                  alignment: Alignment.center,
+                                                  child: CustomLineChart(
+                                                    cdata: blockProvider.getChartData(),
+                                                    lineColor: isLeftBlock? Colors.red :Colors.greenAccent,
+                                                    lineWidth: 3,
+                                                  ),
+                                                ) : Container(),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        
                                       ),
+
+                                      // Expanded(
+                                      //   child: Container(
+                                      //     alignment: Alignment.center,
+                                      //     child: CustomLineChart(
+                                      //       cdata: blockProvider.getChartData(),
+                                      //       lineColor: isLeftBlock? Colors.red :Colors.greenAccent ,
+                                      //       lineWidth: 3,
+                                      //     ),
+                                      //   ),
+                                      // ),
                                                         
                                       Container(
                                         width: double.infinity,
@@ -338,7 +373,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 borderStrokeWidth: blockBorderStrokeWidthForEmptyBlock,
                                 bgColor: appThemeProvider.blockBackgroundColor,
                                 linearGradient: LinearGradient(
-                                  colors: isLeftContainer
+                                  colors: isLeftBlock
                                       ? [
                                           appThemeProvider.blockBorderColorTop,
                                           appThemeProvider.blockBorderColorBottom,
