@@ -152,7 +152,22 @@ class _AppDrawerState extends State<AppDrawer> {
                 },
               ),
               const SizedBox(height: 0),
-              _buildListTile(
+              // _buildListTile(
+              //         context,
+              //         index: 7,
+              //         icon: Icons.logout,
+              //         title: AppLocalizations.of(context)!.app_drawer_logout,
+              //         appThemeProvider: appThemeProvider,
+              //         onTap: () {
+              //            appThemeProvider.setIsLoggedIn(false);
+              //           // Handle logout
+              //           Navigator.of(context).push(MaterialPageRoute(
+              //             builder: (context) => const SignInView(),
+              //           ));
+              //         },
+              //       )
+              appThemeProvider.isLoggedIn == true
+                  ? _buildListTile(
                       context,
                       index: 7,
                       icon: Icons.logout,
@@ -165,33 +180,18 @@ class _AppDrawerState extends State<AppDrawer> {
                         ));
                       },
                     )
-              // appThemeProvider.isLoggedIn == true
-              //     ? 
-              //     _buildListTile(
-              //         context,
-              //         index: 7,
-              //         icon: Icons.logout,
-              //         title: AppLocalizations.of(context)!.app_drawer_logout,
-              //         appThemeProvider: appThemeProvider,
-              //         onTap: () {
-              //           // Handle logout
-              //           Navigator.of(context).push(MaterialPageRoute(
-              //             builder: (context) => const SignInView(),
-              //           ));
-              //         },
-              //       )
-              //     : _buildListTile(
-              //         context,
-              //         index: 7,
-              //         icon: Icons.logout,
-              //         title: AppLocalizations.of(context)!.app_drawer_signin,
-              //         appThemeProvider: appThemeProvider,
-              //         onTap: () {
-              //           Navigator.of(context).push(MaterialPageRoute(
-              //             builder: (context) => const SignInView(),
-              //           ));
-              //         },
-              //       ),
+                  : _buildListTile(
+                      context,
+                      index: 7,
+                      icon: Icons.login,
+                      title: AppLocalizations.of(context)!.app_drawer_signin,
+                      appThemeProvider: appThemeProvider,
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignInView(),
+                        ));
+                      },
+                    ),
             ],
           );
         },

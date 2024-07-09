@@ -1,4 +1,7 @@
+import 'package:btcapp/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:btcapp/views/bottom_nav_bar/bottom_nav_bar_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // CustomRoundedButton widget definition
 class CustomRoundedButton extends StatelessWidget {
@@ -154,9 +157,11 @@ class _InterestsModalState extends State<InterestsModal> {
                   ),
                   CustomRoundedButton(
                     title: 'Continue',
-                    onPressed: () {
-                      Navigator.pop(context);
-                      // Handle continue action
+                    onPressed: () async {
+                      context.read<BottomNavBarProvider>().selectedIndex = 1;
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const BottomNavBarScreen(),
+                      ));
                     },
                     isPrimary: false,
                   ),
