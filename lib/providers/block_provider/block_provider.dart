@@ -1,4 +1,5 @@
 import 'package:btcapp/models/block_model/block_model.dart';
+import 'package:btcapp/models/chart_model/line_chart_data_model.dart';
 import 'package:btcapp/service/block_service/block_service.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,21 @@ class BlockProvider extends ChangeNotifier{
       _blockModel!.data[index] = temp;
       notifyListeners();
     }
+  }
+
+  List<LineChartDataModel> getChartData() {
+    return [
+      LineChartDataModel(0, 2),
+      LineChartDataModel(1, 10),
+      LineChartDataModel(2, 1),
+      LineChartDataModel(3, 6),
+      LineChartDataModel(4, 2),
+      LineChartDataModel(5, 10),
+      LineChartDataModel(6, 1),
+      LineChartDataModel(7, 12),
+      LineChartDataModel(8, 2),
+      LineChartDataModel(9, 5),
+    ];
   }
 
 
