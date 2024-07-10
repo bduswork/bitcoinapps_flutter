@@ -1,9 +1,11 @@
 import 'package:btcapp/common/app_background.dart';
 import 'package:btcapp/common/custom_info_button.dart';
+import 'package:btcapp/common/custom_line_chart.dart';
 import 'package:btcapp/providers/block_provider/block_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
 import 'package:btcapp/utils/constants/size_constant.dart';
+import 'package:btcapp/utils/dialog_helper/dialog_helper.dart';
 import 'package:btcapp/utils/painters/block_painter.dart';
 import 'package:btcapp/views/blocks_details/live_price_details_screen.dart';
 import 'package:btcapp/views/drawer/app_drawer_screen.dart';
@@ -13,6 +15,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:provider/provider.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -110,233 +113,292 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
 
                   //Expanded Block
-                  !blockProvider.isLoading? InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const LivePriceDetailsScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 180,
-                      decoration: BoxDecoration(
-                        border: GradientBoxBorder(
-                          gradient: LinearGradient(
-                            colors: [
-                              appThemeProvider.blockBorderColorTop,
-                              appThemeProvider.blockBorderColorBottom,
-                              appThemeProvider.blockBorderColorBottom
-                            ],
-                            begin: Alignment.topCenter, // Start the gradient at the top
-                            end: Alignment.bottomCenter, // End the gradient at the bottom
+                  Skeletonizer(
+                    enabled: blockProvider.isLoading,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const LivePriceDetailsScreen(),
                           ),
-                          width: blockBorderStrokeWidthForFullBlock,
-                        ),
-                        borderRadius: BorderRadius.circular(20)
-                      ),
+                        );
+                      },
                       child: Container(
-                        padding: const EdgeInsets.all(10),
-                        height: 180,
                         width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                width: double.infinity,
-                                alignment: Alignment.topLeft,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      blockProvider.blockModel!.data[0].subMenuName,
-                                      style: TextStyle(
-                                        color: appThemeProvider.textColor,
-                                        fontSize: 14),
-                                    ),
-                                    const SizedBox(
-                                      height: 2,
-                                    ),
-                                    Text(
-                                      blockProvider.blockModel!.data[0].price==null? "": blockProvider.blockModel!.data[0].price.toString(),
-                                      style: TextStyle(
+                        height: 180,
+                        decoration: BoxDecoration(
+                          border: GradientBoxBorder(
+                            gradient: LinearGradient(
+                              colors: [
+                                appThemeProvider.blockBorderColorTop,
+                                appThemeProvider.blockBorderColorBottom,
+                                appThemeProvider.blockBorderColorBottom
+                              ],
+                              begin: Alignment.topCenter, // Start the gradient at the top
+                              end: Alignment.bottomCenter, // End the gradient at the bottom
+                            ),
+                            width: blockBorderStrokeWidthForFullBlock,
+                          ),
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 180,
+                          width: double.infinity,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  alignment: Alignment.topLeft,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        blockProvider.blockModel?.data[0].subMenuName?? "Block Name",
+                                        style: TextStyle(
                                           color: appThemeProvider.textColor,
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+                                          fontSize: 14),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(
+                                        height: 1,
+                                      ),
+                                      Text(
+                                        blockProvider.isLoading? "Live Price" : (blockProvider.blockModel?.data[0].price == null? "" : blockProvider.blockModel!.data[0].price.toString()),
+                                        style: TextStyle(
+                                            color: appThemeProvider.textColor,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              alignment: Alignment.centerLeft,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const CustomInfoButton(size: 28,),
-                                  SvgPicture.asset(
-                                    threeDotHorizontalIcon,
-                                    width: 24,
-                                    height: 24,
-                                    colorFilter: ColorFilter.mode(appThemeProvider.threeDotIconBgColor, BlendMode.srcIn),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                              Container(
+                                width: double.infinity,
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        DialogHelper().showCustomDialogBox(context, title: blockProvider.blockModel?.data[0].subMenuName?? "Block Name", content: "Lorem Ipsum is a placeholder text that designers and developers use to fill the space of a website or document with dummy content when the actual content is not yet available. The text has been used since the 16th century and is derived from a Latin text by Cicero.");
+                                      },
+                                      child: const CustomInfoButton(size: 22,)
+                                    ),
+                                    SvgPicture.asset(
+                                      threeDotHorizontalIcon,
+                                      width: 22,
+                                      height: 22,
+                                      colorFilter: ColorFilter.mode(appThemeProvider.threeDotIconBgColor, BlendMode.srcIn),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ) : Container(),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
 
                   Container(
-                    child: blockProvider.isLoading
-                    ? Center(child: CircularProgressIndicator(
-                      color: appThemeProvider.textColor
-                    ))
-                    : blockProvider.errorMessage.isNotEmpty
-                        ? Center(child: Text(blockProvider.errorMessage))
-                        : GridView.builder(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(0),
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                    child: 
+                    // blockProvider.isLoading? 
+                    // Center(child: CircularProgressIndicator(
+                    //   color: appThemeProvider.textColor
+                    // )) : 
+                    blockProvider.errorMessage.isNotEmpty
+                      ? Center(child: Text(blockProvider.errorMessage))
+                      : Skeletonizer(
+                        enabled: blockProvider.isLoading,
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(0),
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
                               childAspectRatio: 1.1),
-                      itemCount: blockProvider.blockModel!.data.length+1,
-                      itemBuilder: (BuildContext context, int index) {
-                        index++;
-                        bool isLeftContainer = index % 2 == 0;
-                        if (index < blockProvider.blockModel!.data.length+1 - 1) {
-                          return CustomPaint(
-                            painter: BlockPainter(
-                              isEmptyAndLightModeBlock: false,
-                              borderStrokeWidth:
-                                  blockBorderStrokeWidthForFullBlock,
-                              bgColor: appThemeProvider.blockBackgroundColor,
-                              linearGradient: LinearGradient(
-                                colors: isLeftContainer
-                                    ? [
-                                        appThemeProvider.blockBorderColorTop,
-                                        appThemeProvider.blockBorderColorBottom,
-                                        appThemeProvider.blockBorderColorBottom
-                                      ]
-                                    : [
-                                        appThemeProvider.blockGridRightBorderColorTop,
-                                        appThemeProvider.blockGridRightBorderColorBottom,
-                                        appThemeProvider.blockGridRightBorderColorBottom
-                                      ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                            ),
-                            child: Container(
-                              padding: const EdgeInsets.only(
-                                  top: 16, right: 16, left: 12, bottom: 12),
-                              alignment: Alignment.topLeft,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.all(0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            blockProvider.blockModel!.data[index].subMenuName,
-                                            style: TextStyle(
-                                                color: appThemeProvider.textColor,
-                                                fontSize: 14),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          const SizedBox(
-                                            height: 2,
-                                          ),
-                                          Text(
-                                            blockProvider.blockModel!.data[index].price==null? "":blockProvider.blockModel!.data[index].price.toString(),
-                                            style: TextStyle(
-                                                color: appThemeProvider.textColor,
-                                                fontSize: 24,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    
+                          itemCount: blockProvider.blockModel?.data.length?? 10,
+                          itemBuilder: (BuildContext context, int index) {
+                          index++;
+                          bool isLeftBlock = index % 2 != 0;
+                          int totalLength = blockProvider.blockModel?.data.length?? 10;
+                          if (index < totalLength) {
+                            return InkWell(
+                              onDoubleTap: () {
+                                blockProvider.swapBlocks(index);
+                              },
+                              child: CustomPaint(
+                                painter: BlockPainter(
+                                  isEmptyAndLightModeBlock: false,
+                                  borderStrokeWidth: blockBorderStrokeWidthForFullBlock,
+                                  bgColor: appThemeProvider.blockBackgroundColor,
+                                  linearGradient: LinearGradient(
+                                    colors: isLeftBlock
+                                        ? [
+                                            appThemeProvider.blockBorderColorTop,
+                                            appThemeProvider.blockBorderColorBottom,
+                                            appThemeProvider.blockBorderColorBottom
+                                          ]
+                                        : [
+                                            appThemeProvider.blockGridRightBorderColorTop,
+                                            appThemeProvider.blockGridRightBorderColorBottom,
+                                            appThemeProvider.blockGridRightBorderColorBottom
+                                          ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
                                   ),
+                                ),
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      top: 16, right: 16, left: 12, bottom: 12),
+                                  alignment: Alignment.topLeft,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              blockProvider.blockModel?.data[index].subMenuName?? "Block Name",
+                                              style: TextStyle(
+                                                  color: appThemeProvider.textColor,
+                                                  fontSize: 14),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const SizedBox(
+                                              height: 1,
+                                            ),
+                                            Text(
+                                              blockProvider.isLoading? "Live Price" : (blockProvider.blockModel?.data[index].price == null? "" : blockProvider.blockModel!.data[index].price.toString()),
+                                              style: TextStyle(
+                                                  color: appThemeProvider.textColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
 
-                                  Container(
-                                    width: double.infinity,
-                                    alignment: Alignment.centerLeft,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        const CustomInfoButton(size: 24,),
-                                        SvgPicture.asset(
-                                          threeDotHorizontalIcon,
-                                          width: 24,
-                                          height: 24,
-                                          colorFilter: ColorFilter.mode(appThemeProvider.threeDotIconBgColor, BlendMode.srcIn),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
+                                      Expanded(
+                                        child: Container(
+                                          padding: const EdgeInsets.all(0),
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                flex: 2,
+                                                child: Container()
+                                              ),
+                                              Expanded(
+                                                flex: 3,
+                                                child: !blockProvider.isLoading? Container(
+                                                  height: double.infinity,
+                                                  alignment: Alignment.center,
+                                                  child: CustomLineChart(
+                                                    cdata: blockProvider.getChartData(),
+                                                    lineColor: isLeftBlock? Colors.red :Colors.greenAccent,
+                                                    lineWidth: 3,
+                                                  ),
+                                                ) : Container(),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+
+                                      // Expanded(
+                                      //   child: Container(
+                                      //     alignment: Alignment.center,
+                                      //     child: CustomLineChart(
+                                      //       cdata: blockProvider.getChartData(),
+                                      //       lineColor: isLeftBlock? Colors.red :Colors.greenAccent ,
+                                      //       lineWidth: 3,
+                                      //     ),
+                                      //   ),
+                                      // ),
+                                                        
+                                      Container(
+                                        width: double.infinity,
+                                        alignment: Alignment.centerLeft,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                DialogHelper().showCustomDialogBox(context, title: blockProvider.blockModel?.data[index].subMenuName?? "Block Name", content: "Lorem Ipsum is a placeholder text that designers and developers use to fill the space of a website or document with dummy content when the actual content is not yet available. The text has been used since the 16th century and is derived from a Latin text by Cicero.");
+                                              },
+                                              child: const CustomInfoButton(size: 22,)
+                                            ),
+                                            SvgPicture.asset(
+                                              threeDotHorizontalIcon,
+                                              width: 22,
+                                              height: 22,
+                                              colorFilter: ColorFilter.mode(appThemeProvider.threeDotIconBgColor, BlendMode.srcIn),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ),
-                          );
-                        } else {
-                          return CustomPaint(
-                            painter: BlockPainter(
-                              isEmptyAndLightModeBlock:
-                                  appThemeProvider.isDarkMode ? false : true,
-                              borderStrokeWidth:
-                                  blockBorderStrokeWidthForEmptyBlock,
-                              bgColor: appThemeProvider.blockBackgroundColor,
-                              linearGradient: LinearGradient(
-                                colors: isLeftContainer
-                                    ? [
-                                        appThemeProvider.blockBorderColorTop,
-                                        appThemeProvider.blockBorderColorBottom,
-                                        appThemeProvider.blockBorderColorBottom
-                                      ]
-                                    : [
-                                        appThemeProvider.blockGridRightBorderColorTop,
-                                        appThemeProvider.blockGridRightBorderColorBottom,
-                                        appThemeProvider.blockGridRightBorderColorBottom
-                                      ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
+                            );
+                          } else {
+                            return CustomPaint(
+                              painter: BlockPainter(
+                                isEmptyAndLightModeBlock: appThemeProvider.isDarkMode ? false : true,
+                                borderStrokeWidth: blockBorderStrokeWidthForEmptyBlock,
+                                bgColor: appThemeProvider.blockBackgroundColor,
+                                linearGradient: LinearGradient(
+                                  colors: isLeftBlock
+                                      ? [
+                                          appThemeProvider.blockBorderColorTop,
+                                          appThemeProvider.blockBorderColorBottom,
+                                          appThemeProvider.blockBorderColorBottom
+                                        ]
+                                      : [
+                                          appThemeProvider.blockGridRightBorderColorTop,
+                                          appThemeProvider.blockGridRightBorderColorBottom,
+                                          appThemeProvider.blockGridRightBorderColorBottom
+                                        ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
                               ),
-                            ),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Icon(Icons.add,
-                                  size: 40,
-                                  color: appThemeProvider.blockEmptyIconColor),
-                            ),
-                          );
-                        }
-                      },
-                    ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Icon(Icons.add,
+                                    size: 40,
+                                    color: appThemeProvider.blockEmptyIconColor),
+                              ),
+                            );
+                          }
+                        },
+                                            ),
+                      ),
                   ),
 
                   // GridView.builder(

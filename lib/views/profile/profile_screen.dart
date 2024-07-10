@@ -2,6 +2,7 @@ import 'package:btcapp/common/app_background.dart';
 import 'package:btcapp/common/custom_profile_items.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
 import 'package:btcapp/utils/constants/image_constant.dart';
+import 'package:btcapp/views/auth/signin_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -166,12 +167,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           subtitle: '',
                           onTap: () {},
                         ),
-                        ListItem(
-                          icon: Icons.logout,
-                          title: 'Logout',
-                          subtitle: '',
-                          onTap: () {},
-                        ),
+                        appThemeProvider.isLoggedIn
+                            ? ListItem(
+                                icon: Icons.logout,
+                                title: 'Logout',
+                                subtitle: '',
+                                onTap: () {
+                                  appThemeProvider.setIsLoggedIn(false);
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SignInView(),
+                                  ));
+                                },
+                              )
+                            : ListItem(
+                                icon: Icons.login,
+                                title: 'Sign In',
+                                subtitle: '',
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SignInView(),
+                                  ));
+                                },
+                              ),
                       ],
                     ),
                   ],

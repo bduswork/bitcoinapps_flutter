@@ -15,6 +15,7 @@ class _CreateDashboardScreenState extends State<CreateDashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Provider.of<AppThemeProvider>(context).backgroundColor,
         title: Text(
           'Dashboard ',
@@ -23,15 +24,15 @@ class _CreateDashboardScreenState extends State<CreateDashboardScreen> {
         ),
         centerTitle: true,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_outlined,
-            color: Provider.of<AppThemeProvider>(context).textColor,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(
+        //     Icons.arrow_back_ios_outlined,
+        //     color: Provider.of<AppThemeProvider>(context).textColor,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
       ),
       body: AppBackground(child: Consumer<AppThemeProvider>(
         builder: (context, appThemeProvider, _) {

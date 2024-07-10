@@ -1,6 +1,6 @@
 
-import 'package:btcapp/model/usermodel/user_login_failed_model.dart';
-import 'package:btcapp/model/usermodel/user_model.dart';
+import 'package:btcapp/models/user_model/user_login_failed_model.dart';
+import 'package:btcapp/models/user_model/user_model.dart';
 import 'package:btcapp/service/auth/auth_service.dart';
 import 'package:btcapp/utils/local_storage/app_sharedpreference.dart';
 import 'package:flutter/material.dart';
