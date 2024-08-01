@@ -8,6 +8,7 @@ import 'package:btcapp/utils/constants/size_constant.dart';
 import 'package:btcapp/utils/dialog_helper/dialog_helper.dart';
 import 'package:btcapp/utils/painters/block_painter.dart';
 import 'package:btcapp/views/blocks_details/live_price_details_screen.dart';
+import 'package:btcapp/views/dashboard/add_block_screen.dart';
 import 'package:btcapp/views/drawer/app_drawer_screen.dart';
 import 'package:btcapp/views/notifications/notifications_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  int gridItemLength = 5;
+  //int gridItemLength = 5;
 
   @override
   void initState() {
@@ -115,6 +116,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   //Expanded Block
                   Skeletonizer(
                     enabled: blockProvider.isLoading,
+                    //containersColor: Colors.grey,
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(
@@ -367,32 +369,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               ),
                             );
                           } else {
-                            return CustomPaint(
-                              painter: BlockPainter(
-                                isEmptyAndLightModeBlock: appThemeProvider.isDarkMode ? false : true,
-                                borderStrokeWidth: blockBorderStrokeWidthForEmptyBlock,
-                                bgColor: appThemeProvider.blockBackgroundColor,
-                                linearGradient: LinearGradient(
-                                  colors: isLeftBlock
-                                      ? [
-                                          appThemeProvider.blockBorderColorTop,
-                                          appThemeProvider.blockBorderColorBottom,
-                                          appThemeProvider.blockBorderColorBottom
-                                        ]
-                                      : [
-                                          appThemeProvider.blockGridRightBorderColorTop,
-                                          appThemeProvider.blockGridRightBorderColorBottom,
-                                          appThemeProvider.blockGridRightBorderColorBottom
-                                        ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
+                            return InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (context) {
+                                    return const AddBlockScreen();
+                                  },
+                                );
+                              },
+                              child: CustomPaint(
+                                painter: BlockPainter(
+                                  isEmptyAndLightModeBlock: appThemeProvider.isDarkMode ? false : true,
+                                  borderStrokeWidth: blockBorderStrokeWidthForEmptyBlock,
+                                  bgColor: appThemeProvider.blockBackgroundColor,
+                                  linearGradient: LinearGradient(
+                                    colors: isLeftBlock
+                                        ? [
+                                            appThemeProvider.blockBorderColorTop,
+                                            appThemeProvider.blockBorderColorBottom,
+                                            appThemeProvider.blockBorderColorBottom
+                                          ]
+                                        : [
+                                            appThemeProvider.blockGridRightBorderColorTop,
+                                            appThemeProvider.blockGridRightBorderColorBottom,
+                                            appThemeProvider.blockGridRightBorderColorBottom
+                                          ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                 ),
-                              ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Icon(Icons.add,
-                                    size: 40,
-                                    color: appThemeProvider.blockEmptyIconColor),
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Icon(Icons.add,
+                                      size: 40,
+                                      color: appThemeProvider.blockEmptyIconColor),
+                                ),
                               ),
                             );
                           }
