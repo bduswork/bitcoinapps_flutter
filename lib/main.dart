@@ -1,6 +1,7 @@
 import 'package:btcapp/providers/auth/otp_provider.dart';
 import 'package:btcapp/providers/auth/signin_provider.dart';
 import 'package:btcapp/providers/auth/signup_provider.dart';
+import 'package:btcapp/providers/bitcoin_live_price_provider/bitcoin_live_price_chart_provider.dart';
 import 'package:btcapp/providers/block_provider/block_provider.dart';
 import 'package:btcapp/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:btcapp/providers/language/language_provider.dart';
@@ -21,7 +22,8 @@ void main() {
     ChangeNotifierProvider(create: (context) => BottomNavBarProvider()),
     ChangeNotifierProvider(create: (context) => SigninProvider()),
     ChangeNotifierProvider(create: (context) => SignupProvider()),
-    ChangeNotifierProvider(create: (context) => OtpProvider())
+    ChangeNotifierProvider(create: (context) => OtpProvider()),
+    ChangeNotifierProvider(create: (_) => BitcoinLivePriceChartProvider()),
   ], child: const MyApp()));
 }
 

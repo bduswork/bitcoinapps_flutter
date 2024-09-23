@@ -1,382 +1,429 @@
-import 'dart:io';
+import 'package:btcapp/common/app_background.dart';
+import 'package:btcapp/providers/theme/app_theme_provider.dart';
 
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
-class VideoPlayerScreen extends StatefulWidget {
-  final String videoUrl;
-
-  const VideoPlayerScreen({Key? key, required this.videoUrl}) : super(key: key);
+class LivePriceDetailsScreen extends StatefulWidget {
+  const LivePriceDetailsScreen({super.key});
 
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  State<LivePriceDetailsScreen> createState() => _LivePriceDetailsScreenState();
 }
 
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late VideoPlayerController _controller;
+class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
+  String _selectedTimeFrame = '1 Hour'; // Initial selected value
+  List<String> timeFrameList = ['1 Hour', '12 Hour', '1 Day', '7 Day'];
 
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        key: const ValueKey<String>('home_page'),
-        appBar: AppBar(
-          title: const Text('Video player example'),
-          actions: <Widget>[
-            IconButton(
-              key: const ValueKey<String>('push_tab'),
-              icon: const Icon(Icons.navigation),
-              onPressed: () {
-                Navigator.push<_PlayerVideoAndPopPage>(
-                  context,
-                  MaterialPageRoute<_PlayerVideoAndPopPage>(
-                    builder: (BuildContext context) => _PlayerVideoAndPopPage(),
-                  ),
-                );
-              },
-            )
-          ],
-          bottom: const TabBar(
-            isScrollable: true,
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.cloud),
-                text: 'Remote',
-              ),
-              //Tab(icon: Icon(Icons.insert_drive_file), text: 'Asset'),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            _BumbleBeeRemoteVideo(),
-            //_ButterFlyAssetVideo(),
-          ],
-        ),
-      ),
-    );
+  /// It returns the candle series to the chart.
+  List<CandleSeries<ChartSampleData, DateTime>> _getCandleSeries() {
+    return <CandleSeries<ChartSampleData, DateTime>>[
+      CandleSeries<ChartSampleData, DateTime>(
+        enableSolidCandles: true,
+        dataSource: <ChartSampleData>[
+          ChartSampleData(
+              x: DateTime(2022, 06, 01),
+              open: 148.86,
+              high: 151.74,
+              low: 147.68,
+              close: 151.21),
+          ChartSampleData(
+              x: DateTime(2022, 06, 02),
+              open: 150.17,
+              high: 151.27,
+              low: 147.83,
+              close: 148.71),
+          ChartSampleData(
+              x: DateTime(2022, 06, 03),
+              open: 147.83,
+              high: 148.91,
+              low: 144.46,
+              close: 145.38),
+          ChartSampleData(
+              x: DateTime(2022, 06, 06),
+              open: 147.03,
+              high: 148.57,
+              low: 144.9,
+              close: 146.14),
+          ChartSampleData(
+              x: DateTime(2022, 06, 07),
+              open: 148.22,
+              high: 149.0,
+              low: 146.31,
+              close: 148.71),
+          ChartSampleData(
+              x: DateTime(2022, 06, 08),
+              open: 148.86,
+              high: 149.87,
+              low: 147.46,
+              close: 148.71),
+          ChartSampleData(
+              x: DateTime(2022, 06, 09),
+              open: 147.08,
+              high: 147.95,
+              low: 142.53,
+              close: 142.64),
+          ChartSampleData(
+              x: DateTime(2022, 06, 10),
+              open: 142.53,
+              high: 145.18,
+              low: 140.52,
+              close: 141.66),
+          ChartSampleData(
+              x: DateTime(2022, 06, 13),
+              open: 140.03,
+              high: 144.34,
+              low: 139.2,
+              close: 142.45),
+          ChartSampleData(
+              x: DateTime(2022, 06, 14),
+              open: 145.25,
+              high: 146.44,
+              low: 141.67,
+              close: 141.66),
+          ChartSampleData(
+              x: DateTime(2022, 06, 15),
+              open: 135.87,
+              high: 137.46,
+              low: 132.16,
+              close: 135.43),
+          ChartSampleData(
+              x: DateTime(2022, 06, 16),
+              open: 133.13,
+              high: 135.3,
+              low: 131.44,
+              close: 132.16),
+          
+        ],
+        name: 'AAPL',
+        xValueMapper: (ChartSampleData sales, _) => sales.x as DateTime,
+        lowValueMapper: (ChartSampleData sales, _) => sales.low,
+        highValueMapper: (ChartSampleData sales, _) => sales.high,
+        openValueMapper: (ChartSampleData sales, _) => sales.open,
+        closeValueMapper: (ChartSampleData sales, _) => sales.close,
+      )
+    ];
   }
-}
 
-// class _ButterFlyAssetVideo extends StatefulWidget {
-//   @override
-//   _ButterFlyAssetVideoState createState() => _ButterFlyAssetVideoState();
-// }
-
-// class _ButterFlyAssetVideoState extends State<_ButterFlyAssetVideo> {
-//   late VideoPlayerController _controller;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _controller = VideoPlayerController.asset('assets/Butterfly-209.mp4');
-
-//     _controller.addListener(() {
-//       setState(() {});
-//     });
-//     _controller.setLooping(true);
-//     _controller.initialize().then((_) => setState(() {}));
-//     _controller.play();
-//   }
-
-//   @override
-//   void dispose() {
-//     _controller.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
-//       child: Column(
-//         children: <Widget>[
-//           Container(
-//             padding: const EdgeInsets.only(top: 20.0),
-//           ),
-//           const Text('With assets mp4'),
-//           Container(
-//             padding: const EdgeInsets.all(20),
-//             child: AspectRatio(
-//               aspectRatio: _controller.value.aspectRatio,
-//               child: Stack(
-//                 alignment: Alignment.bottomCenter,
-//                 children: <Widget>[
-//                   VideoPlayer(_controller),
-//                   _ControlsOverlay(controller: _controller),
-//                   VideoProgressIndicator(_controller, allowScrubbing: true),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-class _BumbleBeeRemoteVideo extends StatefulWidget {
-  @override
-  _BumbleBeeRemoteVideoState createState() => _BumbleBeeRemoteVideoState();
-}
-
-class _BumbleBeeRemoteVideoState extends State<_BumbleBeeRemoteVideo> {
-  late VideoPlayerController _controller;
-  bool _isConnected = false;
-
-  // Future<ClosedCaptionFile> _loadCaptions() async {
-  //   final String fileContents = await DefaultAssetBundle.of(context)
-  //       .loadString('assets/bumble_bee_captions.vtt');
-  //   return WebVTTCaptionFile(
-  //       fileContents); // For vtt files, use WebVTTCaptionFile
-  // }
+  _LivePriceDetailsScreenState();
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(
-      Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-      //closedCaptionFile: _loadCaptions(),
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-    );
-
-    _controller.addListener(() {
-      setState(() {});
-    });
-    _controller.setLooping(true);
-    _controller.initialize();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-    if (_isConnected) {
-      _controller.dispose();
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          Center(
-            child: _isConnected
-                ? _controller.value.isInitialized
-                    ? AspectRatio(
-                        aspectRatio: _controller.value.aspectRatio,
-                        child: VideoPlayer(_controller),
-                      )
-                    : const CircularProgressIndicator()
-                : const Text('No internet connection'),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Provider.of<AppThemeProvider>(context).backgroundColor,
+        title: Text(
+          'Live Price',
+          style: TextStyle(
+              color: Provider.of<AppThemeProvider>(context).textColor),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_outlined,
+            color: Provider.of<AppThemeProvider>(context).textColor,
           ),
-          Container(padding: const EdgeInsets.only(top: 20.0)),
-          const Text('With remote mp4'),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: <Widget>[
-                  VideoPlayer(_controller),
-                  ClosedCaption(text: _controller.value.caption.text),
-                  _ControlsOverlay(controller: _controller),
-                  VideoProgressIndicator(_controller, allowScrubbing: true),
-                ],
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.more_vert,
+              color: Provider.of<AppThemeProvider>(context).textColor,
+            ),
+            onPressed: () {
+              // Add your onPressed logic here
+            },
+          ),
+        ],
+      ),
+      body: AppBackground(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(context),
+                const SizedBox(height: 20),
+                _buildChartSection(context),
+                const SizedBox(height: 20),
+                _buildDetailsSection(context),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeader(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Text(
+              'BitCoin',
+              style: TextStyle(
+                color: Provider.of<AppThemeProvider>(context).textColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              decoration: BoxDecoration(
+                color: Provider.of<AppThemeProvider>(context)
+                    .livePriceGrowthTextBackgroundColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                '+20%',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Provider.of<AppThemeProvider>(context)
+                      .livePriceGrowthTextColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+          decoration: BoxDecoration(
+            color: Provider.of<AppThemeProvider>(context)
+                .livePriceTimeBackgroundColor,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton2<String>(
+              isExpanded: false,
+              items: timeFrameList
+                  .map((String item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Provider.of<AppThemeProvider>(context)
+                                .livePriceTimeTextColor,
+                          ),
+                        ),
+                      ))
+                  .toList(),
+              value: _selectedTimeFrame,
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedTimeFrame = newValue!;
+                });
+              },
+              buttonStyleData: const ButtonStyleData(
+                //padding: EdgeInsets.symmetric(horizontal: 16),
+                height: 30,
+                //width: 140,
+              ),
+              menuItemStyleData: const MenuItemStyleData(
+                height: 40,
               ),
             ),
           ),
+
+          // DropdownButton<String>(
+          //   value: _selectedTimeFrame,
+          //   dropdownColor: Colors.grey[800],
+          //   style: TextStyle(
+          //     fontSize: 14,
+          //     fontWeight: FontWeight.bold,
+          //     color:
+          //         Provider.of<AppThemeProvider>(context).livePriceTimeTextColor,
+          //   ),
+          //   underline: Container(),
+          //   isDense: true,
+          //   items: timeFrameList.map<DropdownMenuItem<String>>((String value) {
+          //     return DropdownMenuItem<String>(
+          //       value: value,
+          //       child: Text(value),
+          //     );
+          //   }).toList(),
+          //   onChanged: (String? newValue) {
+          //     setState(() {
+          //       _selectedTimeFrame = newValue!;
+          //     });
+          //   },
+          // ),
+          //////////////////
+          ///
+          ///
+        ),
+      ],
+    );
+  }
+
+  Widget _buildChartSection(BuildContext context) {
+    // Dummy chart representation
+    return SizedBox(
+        height: 250,
+        //width: 320,
+        child: SfCartesianChart(
+          plotAreaBorderWidth: 0,
+          // title: ChartTitle(text: isCardView ? '' : 'AAPL - 2016'),
+          primaryXAxis: DateTimeAxis(
+              dateFormat: DateFormat.MMMd(),
+              //interval: 2,
+              //intervalType: DateTimeIntervalType.months,
+              //minimum: DateTime(2016),
+              //maximum: DateTime(2016, 10),
+              majorGridLines: const MajorGridLines(width: 0)),
+          primaryYAxis: const NumericAxis(
+              minimum: 130,
+              maximum: 155,
+              interval: 5,
+              labelFormat: r'${value}',
+              axisLine: AxisLine(width: 0)),
+          series: _getCandleSeries(),
+          //trackballBehavior: _trackballBehavior,
+        ));
+  }
+
+  Widget _buildDetailsSection(BuildContext context) {
+    return Consumer<AppThemeProvider>(
+      builder: (context, appThemeProvider, _) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Details',
+                  style: TextStyle(
+                    color: Provider.of<AppThemeProvider>(context).textColor,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextButton(
+                  style: ButtonStyle(
+                    fixedSize: WidgetStateProperty.all(const Size(120, 28)),
+                    visualDensity: VisualDensity.compact,
+                    elevation: WidgetStateProperty.all(0),
+                    backgroundColor: WidgetStateProperty.all(
+                        appThemeProvider.livePriceViewMarketButtonColor),
+                    shape: WidgetStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(99),
+                          side: BorderSide(
+                              color: appThemeProvider
+                                  .livePriceViewMarketButtonBorderColor)),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'View Market',
+                    style: TextStyle(
+                      color:
+                          appThemeProvider.livePriceViewMarketButtonTextColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            _buildDetailItem(context, 'Market Cap', '\$1.2 Trillion', '',
+                '57% of Crypto Market'),
+            _buildDetailItem(context, 'Volume(24h)', '\$57,755,997,955',
+                '+18.24%', '865,920 BTC'),
+            _buildDetailItem(context, 'Circulating Supply', '1.2 Trillion', '',
+                '62% of Total Supply'),
+            _buildDetailItem(
+                context, 'All time High', '\$56,000', '', 'May 2024'),
+            _buildDetailItem(context, 'Cycle Low', '\$56,000', '', 'May 2024'),
+            _buildDetailItem(
+                context, 'Performance', '', '+18.34%', 'Past Year'),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildDetailItem(BuildContext context, String title, String value,
+      String growth, String subtitle) {
+    return Card.filled(
+      color: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      //margin: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        children: [
+          ListTile(
+            //visualDensity: VisualDensity.compact,
+            title: Text(
+              title,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Provider.of<AppThemeProvider>(context).textColor),
+            ),
+            subtitle: Text(
+              subtitle,
+              style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w300,
+                  color: Provider.of<AppThemeProvider>(context)
+                      .textColor
+                      .withOpacity(0.6)),
+            ),
+            trailing: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Provider.of<AppThemeProvider>(context)
+                        .livePriceItemColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  growth,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: growth.startsWith('+') ? Colors.green : Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(thickness: 0.3, color: Colors.grey[500]),
         ],
       ),
     );
   }
 }
 
-Future<bool> _checkInternetConnection() async {
-  try {
-    final result = await InternetAddress.lookup('google.com');
-    if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-      print('Connected to the Internet');
-      return true;
-    }
-  } on SocketException catch (_) {
-    print('Not connected to the Internet');
-  }
-  return false;
-}
+class ChartSampleData {
+  ChartSampleData({this.x, this.open, this.high, this.low, this.close});
 
-class _ControlsOverlay extends StatelessWidget {
-  const _ControlsOverlay({required this.controller});
-
-  static const List<Duration> _exampleCaptionOffsets = <Duration>[
-    Duration(seconds: -10),
-    Duration(seconds: -3),
-    Duration(seconds: -1, milliseconds: -500),
-    Duration(milliseconds: -250),
-    Duration.zero,
-    Duration(milliseconds: 250),
-    Duration(seconds: 1, milliseconds: 500),
-    Duration(seconds: 3),
-    Duration(seconds: 10),
-  ];
-  static const List<double> _examplePlaybackRates = <double>[
-    0.25,
-    0.5,
-    1.0,
-    1.5,
-    2.0,
-    3.0,
-    5.0,
-    10.0,
-  ];
-
-  final VideoPlayerController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AnimatedSwitcher(
-          duration: const Duration(milliseconds: 50),
-          reverseDuration: const Duration(milliseconds: 200),
-          child: controller.value.isPlaying
-              ? const SizedBox.shrink()
-              : const ColoredBox(
-                  color: Colors.black26,
-                  child: Center(
-                    child: Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                      size: 100.0,
-                      semanticLabel: 'Play',
-                    ),
-                  ),
-                ),
-        ),
-        GestureDetector(
-          onTap: () {
-            controller.value.isPlaying ? controller.pause() : controller.play();
-          },
-        ),
-        Align(
-          alignment: Alignment.topLeft,
-          child: PopupMenuButton<Duration>(
-            initialValue: controller.value.captionOffset,
-            tooltip: 'Caption Offset',
-            onSelected: (Duration delay) {
-              controller.setCaptionOffset(delay);
-            },
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuItem<Duration>>[
-                for (final Duration offsetDuration in _exampleCaptionOffsets)
-                  PopupMenuItem<Duration>(
-                    value: offsetDuration,
-                    child: Text('${offsetDuration.inMilliseconds}ms'),
-                  )
-              ];
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                // Using less vertical padding as the text is also longer
-                // horizontally, so it feels like it would need more spacing
-                // horizontally (matching the aspect ratio of the video).
-                vertical: 12,
-                horizontal: 16,
-              ),
-              child: Text('${controller.value.captionOffset.inMilliseconds}ms'),
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.topRight,
-          child: PopupMenuButton<double>(
-            initialValue: controller.value.playbackSpeed,
-            tooltip: 'Playback speed',
-            onSelected: (double speed) {
-              controller.setPlaybackSpeed(speed);
-            },
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuItem<double>>[
-                for (final double speed in _examplePlaybackRates)
-                  PopupMenuItem<double>(
-                    value: speed,
-                    child: Text('${speed}x'),
-                  )
-              ];
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                // Using less vertical padding as the text is also longer
-                // horizontally, so it feels like it would need more spacing
-                // horizontally (matching the aspect ratio of the video).
-                vertical: 12,
-                horizontal: 16,
-              ),
-              child: Text('${controller.value.playbackSpeed}x'),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _PlayerVideoAndPopPage extends StatefulWidget {
-  @override
-  _PlayerVideoAndPopPageState createState() => _PlayerVideoAndPopPageState();
-}
-
-class _PlayerVideoAndPopPageState extends State<_PlayerVideoAndPopPage> {
-  late VideoPlayerController _videoPlayerController;
-  bool startedPlaying = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _videoPlayerController =
-        VideoPlayerController.asset('assets/Butterfly-209.mp4');
-    _videoPlayerController.addListener(() {
-      if (startedPlaying && !_videoPlayerController.value.isPlaying) {
-        Navigator.pop(context);
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-
-  Future<bool> started() async {
-    await _videoPlayerController.initialize();
-    await _videoPlayerController.play();
-    startedPlaying = true;
-    return true;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: Center(
-        child: FutureBuilder<bool>(
-          future: started(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.data ?? false) {
-              return AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
-                child: VideoPlayer(_videoPlayerController),
-              );
-            } else {
-              return const Text('waiting for video to load');
-            }
-          },
-        ),
-      ),
-    );
-  }
+  final DateTime? x;
+  final double? open;
+  final double? high;
+  final double? low;
+  final double? close;
 }

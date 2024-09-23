@@ -1,6 +1,7 @@
 import 'package:btcapp/common/app_background.dart';
+import 'package:btcapp/models/live_price_chart_model/bitcoin_live_price_chart_model.dart';
+import 'package:btcapp/providers/bitcoin_live_price_provider/bitcoin_live_price_chart_provider.dart';
 import 'package:btcapp/providers/theme/app_theme_provider.dart';
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -16,156 +17,16 @@ class LivePriceDetailsScreen extends StatefulWidget {
 
 class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
   String _selectedTimeFrame = '1 Hour'; // Initial selected value
-  List<String> timeFrameList = ['1 Hour', '12 Hour', '1 Day', '7 Day'];
-
-  /// It returns the candle series to the chart.
-  List<CandleSeries<ChartSampleData, DateTime>> _getCandleSeries() {
-    return <CandleSeries<ChartSampleData, DateTime>>[
-      CandleSeries<ChartSampleData, DateTime>(
-        enableSolidCandles: true,
-        dataSource: <ChartSampleData>[
-          ChartSampleData(
-              x: DateTime(2022, 06, 01),
-              open: 148.86,
-              high: 151.74,
-              low: 147.68,
-              close: 151.21),
-          ChartSampleData(
-              x: DateTime(2022, 06, 02),
-              open: 150.17,
-              high: 151.27,
-              low: 147.83,
-              close: 148.71),
-          ChartSampleData(
-              x: DateTime(2022, 06, 03),
-              open: 147.83,
-              high: 148.91,
-              low: 144.46,
-              close: 145.38),
-          ChartSampleData(
-              x: DateTime(2022, 06, 06),
-              open: 147.03,
-              high: 148.57,
-              low: 144.9,
-              close: 146.14),
-          ChartSampleData(
-              x: DateTime(2022, 06, 07),
-              open: 148.22,
-              high: 149.0,
-              low: 146.31,
-              close: 148.71),
-          ChartSampleData(
-              x: DateTime(2022, 06, 08),
-              open: 148.86,
-              high: 149.87,
-              low: 147.46,
-              close: 148.71),
-          ChartSampleData(
-              x: DateTime(2022, 06, 09),
-              open: 147.08,
-              high: 147.95,
-              low: 142.53,
-              close: 142.64),
-          ChartSampleData(
-              x: DateTime(2022, 06, 10),
-              open: 142.53,
-              high: 145.18,
-              low: 140.52,
-              close: 141.66),
-          ChartSampleData(
-              x: DateTime(2022, 06, 13),
-              open: 140.03,
-              high: 144.34,
-              low: 139.2,
-              close: 142.45),
-          ChartSampleData(
-              x: DateTime(2022, 06, 14),
-              open: 145.25,
-              high: 146.44,
-              low: 141.67,
-              close: 141.66),
-          ChartSampleData(
-              x: DateTime(2022, 06, 15),
-              open: 135.87,
-              high: 137.46,
-              low: 132.16,
-              close: 135.43),
-          ChartSampleData(
-              x: DateTime(2022, 06, 16),
-              open: 133.13,
-              high: 135.3,
-              low: 131.44,
-              close: 132.16),
-          ChartSampleData(
-              x: DateTime(2022, 06, 17),
-              open: 130.07,
-              high: 133.08,
-              low: 129.81,
-              close: 131.56),
-          ChartSampleData(
-              x: DateTime(2022, 06, 21),
-              open: 133.13,
-              high: 135.45,
-              low: 132.32,
-              close: 134.48),
-          ChartSampleData(
-              x: DateTime(2022, 06, 22),
-              open: 133.77,
-              high: 135.25,
-              low: 133.21,
-              close: 135.21),
-          ChartSampleData(
-              x: DateTime(2022, 06, 23),
-              open: 134.78,
-              high: 136.88,
-              low: 133.95,
-              close: 135.76),
-          ChartSampleData(
-              x: DateTime(2022, 06, 24),
-              open: 138.1,
-              high: 139.68,
-              low: 137.06,
-              close: 138.93),
-          ChartSampleData(
-              x: DateTime(2022, 06, 27),
-              open: 141.56,
-              high: 143.49,
-              low: 141.01,
-              close: 141.66),
-          ChartSampleData(
-              x: DateTime(2022, 06, 28),
-              open: 139.02,
-              high: 140.38,
-              low: 136.82,
-              close: 137.44),
-          ChartSampleData(
-              x: DateTime(2022, 06, 29),
-              open: 137.46,
-              high: 140.87,
-              low: 136.64,
-              close: 139.23),
-          ChartSampleData(
-              x: DateTime(2022, 06, 30),
-              open: 136.82,
-              high: 137.41,
-              low: 133.77,
-              close: 134.18),
-        ],
-        name: 'AAPL',
-        xValueMapper: (ChartSampleData sales, _) => sales.x as DateTime,
-        lowValueMapper: (ChartSampleData sales, _) => sales.low,
-        highValueMapper: (ChartSampleData sales, _) => sales.high,
-        openValueMapper: (ChartSampleData sales, _) => sales.open,
-        closeValueMapper: (ChartSampleData sales, _) => sales.close,
-      )
-    ];
-  }
+  List<String> timeFrameList = ['1 Hour', '3 Hour', '6 Hour', '12 Hour'];
 
   _LivePriceDetailsScreenState();
 
   @override
   void initState() {
     super.initState();
+    // Fetch initial data
+    Provider.of<BitcoinLivePriceChartProvider>(context, listen: false)
+        .fetchBitcoinPriceData('bitcoin', 1);
   }
 
   @override
@@ -282,6 +143,27 @@ class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
               onChanged: (String? newValue) {
                 setState(() {
                   _selectedTimeFrame = newValue!;
+                  // Update data based on selected timeframe
+                  int hour;
+                  switch (_selectedTimeFrame) {
+                    case '1 Hour':
+                      hour = 1; // half a day
+                      break;
+                    case '3 Hour':
+                      hour = 3;
+                      break;
+                    case '6 Hour':
+                      hour = 6;
+                      break;
+                    case '12 Hour':
+                      hour = 12;
+                      break;
+                    default:
+                      hour = 1;
+                  }
+                  Provider.of<BitcoinLivePriceChartProvider>(context,
+                          listen: false)
+                      .fetchBitcoinPriceData('bitcoin', hour);
                 });
               },
               buttonStyleData: const ButtonStyleData(
@@ -294,62 +176,69 @@ class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
               ),
             ),
           ),
-
-          // DropdownButton<String>(
-          //   value: _selectedTimeFrame,
-          //   dropdownColor: Colors.grey[800],
-          //   style: TextStyle(
-          //     fontSize: 14,
-          //     fontWeight: FontWeight.bold,
-          //     color:
-          //         Provider.of<AppThemeProvider>(context).livePriceTimeTextColor,
-          //   ),
-          //   underline: Container(),
-          //   isDense: true,
-          //   items: timeFrameList.map<DropdownMenuItem<String>>((String value) {
-          //     return DropdownMenuItem<String>(
-          //       value: value,
-          //       child: Text(value),
-          //     );
-          //   }).toList(),
-          //   onChanged: (String? newValue) {
-          //     setState(() {
-          //       _selectedTimeFrame = newValue!;
-          //     });
-          //   },
-          // ),
-          //////////////////
-          ///
-          ///
         ),
       ],
     );
   }
 
   Widget _buildChartSection(BuildContext context) {
-    // Dummy chart representation
-    return SizedBox(
-        height: 250,
-        //width: 320,
-        child: SfCartesianChart(
-          plotAreaBorderWidth: 0,
-          // title: ChartTitle(text: isCardView ? '' : 'AAPL - 2016'),
-          primaryXAxis: DateTimeAxis(
-              dateFormat: DateFormat.MMMd(),
-              //interval: 2,
-              //intervalType: DateTimeIntervalType.months,
-              //minimum: DateTime(2016),
-              //maximum: DateTime(2016, 10),
-              majorGridLines: const MajorGridLines(width: 0)),
-          primaryYAxis: const NumericAxis(
-              minimum: 130,
-              maximum: 155,
-              interval: 5,
-              labelFormat: r'${value}',
-              axisLine: AxisLine(width: 0)),
-          series: _getCandleSeries(),
-          //trackballBehavior: _trackballBehavior,
-        ));
+    return Consumer<BitcoinLivePriceChartProvider>(
+      builder: (context, provider, child) {
+        if (provider.isLoading) {
+          return Center(child: CircularProgressIndicator());
+        } else if (provider.errorMessage != null) {
+          return Center(child: Text(provider.errorMessage!));
+        } else {
+          return SizedBox(
+            height: 250,
+            child: SfCartesianChart(
+              plotAreaBorderWidth: 0,
+              primaryXAxis: DateTimeAxis(
+                  dateFormat: DateFormat.MMMd(),
+                  majorGridLines: const MajorGridLines(width: 0)),
+              primaryYAxis: NumericAxis(
+                  minimum: provider.priceData.isNotEmpty
+                      ? provider.priceData
+                          .map((e) => e.low.toDouble())
+                          .reduce((a, b) => a < b ? a : b)
+                      : 0,
+                  maximum: provider.priceData.isNotEmpty
+                      ? provider.priceData
+                          .map((e) => e.high.toDouble())
+                          .reduce((a, b) => a > b ? a : b)
+                      : 100,
+                  interval: (provider.priceData.isNotEmpty
+                          ? provider.priceData
+                                  .map((e) => e.high.toDouble())
+                                  .reduce((a, b) => a > b ? a : b) -
+                              provider.priceData
+                                  .map((e) => e.low.toDouble())
+                                  .reduce((a, b) => a < b ? a : b)
+                          : 100) /
+                      5,
+                  labelFormat: r'${value}',
+                  axisLine: const AxisLine(width: 0)),
+              series: [
+                CandleSeries<BitcoinLivePriceChartModel, DateTime>(
+                  enableSolidCandles: true,
+                  dataSource: provider.priceData,
+                  xValueMapper: (BitcoinLivePriceChartModel data, _) =>
+                      DateTime.fromMillisecondsSinceEpoch(data.timestamp),
+                  lowValueMapper: (BitcoinLivePriceChartModel data, _) =>
+                      data.low.toDouble(),
+                  highValueMapper: (BitcoinLivePriceChartModel data, _) =>
+                      data.high.toDouble(),
+                  openValueMapper: (BitcoinLivePriceChartModel data, _) =>
+                      data.open.toDouble(),
+                  closeValueMapper: (BitcoinLivePriceChartModel data, _) =>
+                      data.close.toDouble(),
+                )
+              ],
+            ),
+          );
+        }
+      },
+    );
   }
 
   Widget _buildDetailsSection(BuildContext context) {
@@ -420,11 +309,9 @@ class _LivePriceDetailsScreenState extends State<LivePriceDetailsScreen> {
     return Card.filled(
       color: Colors.transparent,
       surfaceTintColor: Colors.transparent,
-      //margin: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
           ListTile(
-            //visualDensity: VisualDensity.compact,
             title: Text(
               title,
               style: TextStyle(
